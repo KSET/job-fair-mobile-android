@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#191938</color>
+    <color name="textColor">#191938</color>
+    <color name="subtextColor">#cc191938</color>
+
+    <color name="colorPrimaryDark">#191938</color>
+    <color name="colorAccent">#191938</color>
+    <color name="white">#ffffff</color>
+    <color name="splash_background">@color/colorPrimary</color>
+    <color name="in_progress_label_background">@android:color/holo_green_light</color>
+</resources>

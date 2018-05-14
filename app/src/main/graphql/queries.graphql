@@ -1,0 +1,119 @@
+query CompaniesQuery {
+  companies {
+    id
+    name
+    logo {
+      small {
+        url
+      }
+    }
+  }
+}
+
+query Industries {
+  industries{
+    id
+    name
+    companies{
+      id
+    }
+  }
+}
+
+query PresentationsQuery {
+      presentations {
+            id
+            title
+            occures_at
+            finishes_at
+            description
+            location
+            presenter_bio
+            presenter_photo{
+                thumb{
+                    url
+                }
+            }
+            company {
+              id
+              name
+              logo{
+                large{
+                  url
+                }
+              }
+            }
+          }
+}
+
+query WorkshopsQuery{
+    workshops {
+            id
+        	name
+            occures_at
+            finishes_at
+            description
+            location
+            company {
+              id
+              name
+              logo{
+                large{
+                  url
+                }
+              }
+            }
+          }
+}
+
+query CompanyDetails($id : ID) {
+  company(id: $id) {
+    id
+    name
+    homepage_url
+    logo {
+      medium {
+        url
+      }
+    }
+    industry {
+      name
+    }
+    workshop {
+      name
+      occures_at
+    }
+    presentation {
+      title
+      occures_at
+    }
+    short_description
+    cocktail {
+      name
+    }
+    booth {
+      location
+      geolocation
+    }
+  }
+}
+
+
+query BoothsQuery{
+   booths {
+     id
+     location
+     geolocation
+     notes
+     size
+     company {
+       id
+       name
+       logo {
+         thumb {
+           url
+         }
+       }
+     }
+   }
+ }

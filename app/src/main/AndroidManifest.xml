@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          package="com.undabot.jobfair">
+
+    <uses-permission android:name="android.permission.INTERNET"/>
+
+    <application
+        android:name=".App"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:roundIcon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:largeHeap="true"
+        android:theme="@style/AppTheme">
+        <activity
+            android:name=".splash.view.SplashActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/SplashTheme"/>
+
+        <activity-alias
+            android:name=".Launcher"
+            android:exported="true"
+            android:targetActivity=".splash.view.SplashActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity-alias>
+
+        <activity
+            android:name=".home.view.MainActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".news.details.view.NewsDetailsContainerScreen"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".events.details.view.EventDetailsScreen"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".companies.details.view.CompanyDetailsContainerScreen"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".booths.view.BoothsActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".about.view.AboutScreen"
+            android:screenOrientation="portrait"/>
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/google_maps_key"/>
+    </application>
+
+</manifest>

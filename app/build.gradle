@@ -1,0 +1,114 @@
+apply plugin: 'com.android.application'
+apply plugin: 'com.apollographql.android'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply from: rootProject.file('secrets/secrets.gradle')
+
+android {
+    compileSdkVersion 26
+    defaultConfig {
+        applicationId "hr.apps.n675"
+        minSdkVersion 21
+        targetSdkVersion 26
+        versionCode 6
+        versionName "6.0.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true
+    }
+
+    signingConfigs {
+        release {
+            storeFile file("TODO")
+            storePassword //TODO
+            keyAlias //TODO
+            keyPassword //TODO
+        }
+        debug {
+            storeFile file("../signing/debug.keystore")
+            keyAlias "androiddebugkey"
+            storePassword "android"
+            keyPassword "android"
+        }
+    }
+
+    buildTypes {
+        release {
+            signingConfig signingConfigs.release
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            signingConfig signingConfigs.debug
+            applicationIdSuffix(project.hasProperty('debug_suffix') ? debug_suffix : '.debug')
+            versionNameSuffix(project.hasProperty('debug_suffix') ? ('-' + debug_suffix + '-debug') : '-debug')
+        }
+    }
+}
+
+apollo {
+    customTypeMapping['DateTime'] = "org.joda.time.DateTime"
+}
+
+configurations {
+    all*.exclude group: 'xpp3', module: 'xpp3'
+}
+
+androidExtensions {
+    experimental = true
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
+    kapt libraries.daggerCompiler
+    implementation libraries.dagger
+    implementation libraries.glide
+    kapt libraries.glideKapt
+    implementation libraries.playServicesMaps
+    implementation libraries.supportMultidex
+    implementation libraries.supportAppCompat
+    implementation libraries.supportDesign
+    implementation libraries.supportRecyclerView
+    implementation libraries.supportCardView
+    implementation libraries.supportConstraintLayout
+    implementation libraries.apollo
+    implementation libraries.apolloCache
+    implementation libraries.apolloRx
+    implementation libraries.jodatime
+    implementation libraries.prettyTime
+    implementation libraries.bottomNavigation
+    implementation libraries.retrofit
+    implementation libraries.retrofitConverterGson
+    implementation(libraries.retrofitConverterXML) {
+        exclude module: 'stax-api'
+    }
+    implementation libraries.rxJava2
+    implementation libraries.rxKotlin
+    implementation libraries.rxAndroid
+    implementation libraries.retrofitAdapterRxJava2
+    implementation libraries.firebase
+
+    debugImplementation libraries.hyperion
+    debugImplementation libraries.hyperionAttr
+    debugImplementation libraries.hyperionMeasure
+    debugImplementation libraries.hyperionRecord
+    debugImplementation libraries.hyperionCrash
+
+    testImplementation(libraries.mockitoKotlin) {
+        exclude group: 'org.jetbrains.kotlin'
+    }
+    testImplementation libraries.mockito
+    testImplementation libraries.assertjAndroid
+    testImplementation(libraries.kluent) {
+        exclude group: 'org.jetbrains.kotlin'
+    }
+    testImplementation 'org.mockito:mockito-inline:2.8.9'
+    testImplementation 'joda-time:joda-time:2.9.9'
+    testImplementation 'junit:junit:4.12'
+
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+}
+
+apply plugin: 'com.google.gms.google-services'

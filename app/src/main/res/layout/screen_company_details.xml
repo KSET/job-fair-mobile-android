@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clipToPadding="false"
+            android:overScrollMode="never"
+            android:paddingBottom="@dimen/company_details_bottom_padding">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <include layout="@layout/company_details_header"/>
+
+        <TextView
+            style="@style/CompanyDetailSubtitleText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/about"/>
+
+        <TextView
+            android:id="@+id/aboutCompany"
+            style="@style/CompanyDetailText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            style="@style/CompanyDetailSubtitleText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/industry"/>
+
+        <TextView
+            android:id="@+id/categories"
+            style="@style/CompanyDetailText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/presentationTitle"
+            style="@style/CompanyDetailSubtitleText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/presentation_time"/>
+
+        <TextView
+            android:id="@+id/presentationTime"
+            style="@style/CompanyDetailText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/workshopTitle"
+            style="@style/CompanyDetailSubtitleText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/workshop_time"/>
+
+        <TextView
+            android:id="@+id/workshopTime"
+            style="@style/CompanyDetailText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/cocktailTitle"
+            style="@style/CompanyDetailSubtitleText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/cocktail"/>
+
+        <TextView
+            android:id="@+id/cocktail"
+            style="@style/CompanyDetailText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+
+</ScrollView>

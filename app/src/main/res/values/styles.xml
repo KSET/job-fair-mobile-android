@@ -1,0 +1,157 @@
+<resources>
+
+    <style name="DetailTitleText" parent="TextAppearance.AppCompat">
+        <item name="fontFamily">@font/open_sans</item>
+        <item name="android:fontFamily">@font/open_sans</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:lineSpacingMultiplier">1.1</item>
+        <item name="android:textColor">@color/textColor</item>
+        <item name="android:textSize">22sp</item>
+    </style>
+
+    <style name="DetailText" parent="TextAppearance.AppCompat">
+        <item name="fontFamily">@font/open_sans</item>
+        <item name="android:fontFamily">@font/open_sans</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:lineSpacingMultiplier">1.2</item>
+        <item name="android:textColor">@color/textColor</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="DetailSubtitleText" parent="TextAppearance.AppCompat">
+        <item name="fontFamily">@font/open_sans</item>
+        <item name="android:fontFamily">@font/open_sans</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:lineSpacingMultiplier">1.2</item>
+        <item name="android:textColor">@color/textColor</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="ListTitleText" parent="TextAppearance.AppCompat">
+        <item name="fontFamily">@font/open_sans</item>
+        <item name="android:fontFamily">@font/open_sans</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:lineSpacingMultiplier">1.2</item>
+        <item name="android:textColor">@color/textColor</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:lines">2</item>
+    </style>
+
+    <style name="ListSubTitleText" parent="TextAppearance.AppCompat">
+        <item name="fontFamily">@font/open_sans</item>
+        <item name="android:fontFamily">@font/open_sans</item>
+        <item name="android:textColor">@color/subtextColor</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:maxLines">1</item>
+    </style>
+
+    <style name="BorderedButton" parent="Widget.AppCompat.Button">
+        <item name="fontFamily">@font/open_sans_regular</item>
+        <item name="android:fontFamily">@font/open_sans_regular</item>
+        <item name="android:textColor">@color/colorPrimary</item>
+        <item name="android:background">@drawable/border_button_background</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:gravity">center</item>
+        <item name="android:tint">@color/colorAccent</item>
+        <item name="tint">@color/colorAccent</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="AboutSubTitleText">
+        <item name="android:textAppearance">@style/DetailSubtitleText</item>
+        <item name="android:paddingLeft">16dp</item>
+        <item name="android:paddingTop">8dp</item>
+    </style>
+
+    <style name="AboutText">
+        <item name="android:paddingLeft">16dp</item>
+        <item name="android:paddingRight">16dp</item>
+        <item name="android:paddingTop">4dp</item>
+        <item name="android:paddingBottom">8dp</item>
+        <item name="android:textAppearance">@style/DetailText</item>
+    </style>
+
+    <style name="AboutSocialButton">
+        <item name="android:layout_height">60dp</item>
+        <item name="android:layout_width">90dp</item>
+        <item name="android:foreground">?selectableItemBackgroundBorderless</item>
+        <item name="android:padding">10dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@color/colorPrimary</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="MainToolbar" parent="Base.Widget.AppCompat.Toolbar">
+        <item name="android:background">@color/colorPrimary</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:minHeight">?attr/actionBarSize</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:actionMenuTextColor">@color/white</item>
+        <item name="elevation">0dp</item>
+    </style>
+
+    <style name="ToolbarText" parent="TextAppearance.AppCompat.Widget.ActionBar.Title">
+        <item name="fontFamily">@font/open_sans</item>
+        <item name="android:fontFamily">@font/open_sans</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="CalendarButton" parent="Base.Widget.AppCompat.ImageButton">
+        <item name="android:background">?selectableItemBackgroundBorderless</item>
+        <item name="android:src">@drawable/ic_calendar_add</item>
+    </style>
+
+    <style name="FilterItem">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">center</item>
+        <item name="android:paddingLeft">@dimen/filter_padding_horizontal</item>
+        <item name="android:paddingRight">@dimen/filter_padding_horizontal</item>
+        <item name="android:paddingTop">@dimen/filter_padding_vertical</item>
+        <item name="android:paddingBottom">@dimen/filter_padding_vertical</item>
+        <item name="android:foreground">?selectableItemBackground</item>
+    </style>
+
+    <style name="FilterUnselectedText" parent="TextAppearance.AppCompat">
+        <item name="fontFamily">@font/open_sans</item>
+        <item name="android:fontFamily">@font/open_sans</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/textColor</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:maxLines">2</item>
+    </style>
+
+    <style name="FilterSelectedText" parent="FilterUnselectedText">
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="CompanyDetailSubtitleText">
+        <item name="android:paddingLeft">16dp</item>
+        <item name="android:paddingRight">16dp</item>
+        <item name="android:paddingTop">18dp</item>
+        <item name="android:paddingBottom">8dp</item>
+        <item name="android:textAppearance">@style/DetailSubtitleText</item>
+    </style>
+
+    <style name="CompanyDetailText">
+        <item name="android:paddingLeft">16dp</item>
+        <item name="android:paddingRight">16dp</item>
+        <item name="android:textAppearance">@style/DetailText</item>
+        <item name="android:lineSpacingMultiplier">1.2</item>
+    </style>
+
+    <style name="PagerButtonText" parent="TextAppearance.AppCompat">
+        <item name="fontFamily">@font/open_sans</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:lineSpacingMultiplier">1.2</item>
+        <item name="android:textColor">@color/pager_button_selector</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:maxLines">2</item>
+    </style>
+
+</resources>

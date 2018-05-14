@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:parentTag="android.support.constraint.ConstraintLayout">
+
+    <TextView
+        android:id="@+id/dateLabelTitle"
+        style="@style/AboutSubTitleText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/about_screen_date_info_title"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"/>
+
+    <TextView
+        android:id="@+id/dateLabel"
+        style="@style/AboutText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/about_screen_date_info"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/dateLabelTitle"/>
+
+    <TextView
+        android:id="@+id/timeLabelTitle"
+        style="@style/AboutSubTitleText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/about_screen_time_info_title"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dateLabel"/>
+
+    <TextView
+        android:id="@+id/timeLabel"
+        style="@style/AboutText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:lineSpacingExtra="2dp"
+        android:text="@string/about_screen_time_info"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/timeLabelTitle"/>
+
+    <TextView
+        android:id="@+id/streamLabelTitle"
+        style="@style/AboutSubTitleText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/about_screen_stream_info_title"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/timeLabel"/>
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@color/white"
+        app:layout_constraintBottom_toTopOf="@id/socialLabelTitle"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/streamLabelTitle"/>
+
+    <TextView
+        android:id="@+id/dayOneStreamButton"
+        style="@style/AboutSocialButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawableLeft="@drawable/ic_youtube"
+        android:drawablePadding="10dp"
+        android:text="@string/about_screen_stream_day_one_title"
+        android:textStyle="bold"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/dayTwoStreamButton"
+        app:layout_constraintTop_toBottomOf="@+id/streamLabelTitle"/>
+
+    <TextView
+        android:id="@+id/dayTwoStreamButton"
+        style="@style/AboutSocialButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawableLeft="@drawable/ic_youtube"
+        android:drawablePadding="10dp"
+        android:text="@string/about_screen_stream_day_two_title"
+        android:textStyle="bold"
+        app:layout_constraintLeft_toRightOf="@+id/dayOneStreamButton"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/dayOneStreamButton"/>
+
+    <TextView
+        android:id="@+id/socialLabelTitle"
+        style="@style/AboutSubTitleText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/about_screen_social_info_title"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dayOneStreamButton"/>
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@color/white"
+        app:layout_constraintBottom_toTopOf="@id/descriptionLabelTitle"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/socialLabelTitle"/>
+
+    <android.support.v7.widget.AppCompatTextView
+        android:id="@+id/webButton"
+        style="@style/AboutSocialButton"
+        android:drawableTop="@drawable/ic_web"
+        android:text="@string/about_screen_web_link_text"
+        app:layout_constraintHorizontal_chainStyle="spread"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/emailButton"
+        app:layout_constraintTop_toBottomOf="@+id/socialLabelTitle"/>
+
+    <android.support.v7.widget.AppCompatTextView
+        android:id="@+id/emailButton"
+        style="@style/AboutSocialButton"
+        android:drawableTop="@drawable/ic_email"
+        android:text="@string/about_screen_email_link_text"
+        app:layout_constraintLeft_toRightOf="@+id/webButton"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/webButton"/>
+
+    <android.support.v7.widget.AppCompatTextView
+        android:id="@+id/facebookButton"
+        style="@style/AboutSocialButton"
+        android:drawableTop="@drawable/ic_facebook"
+        android:text="@string/about_screen_facebook_link_text"
+        app:layout_constraintHorizontal_chainStyle="spread"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/instagramButton"
+        app:layout_constraintTop_toBottomOf="@+id/webButton"/>
+
+    <android.support.v7.widget.AppCompatTextView
+        android:id="@+id/instagramButton"
+        style="@style/AboutSocialButton"
+        android:drawableTop="@drawable/ic_instagram"
+        android:text="@string/about_screen_instagram_link_text"
+        app:layout_constraintLeft_toRightOf="@+id/facebookButton"
+        app:layout_constraintRight_toLeftOf="@+id/youtubeButton"
+        app:layout_constraintTop_toBottomOf="@+id/webButton"/>
+
+    <android.support.v7.widget.AppCompatTextView
+        android:id="@+id/youtubeButton"
+        style="@style/AboutSocialButton"
+        android:drawableTop="@drawable/ic_youtube"
+        android:text="@string/about_screen_youtube_link_text"
+        app:layout_constraintLeft_toRightOf="@+id/instagramButton"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/webButton"/>
+
+    <TextView
+        android:id="@+id/descriptionLabelTitle"
+        style="@style/AboutSubTitleText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/about_screen_about_info_title"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/facebookButton"/>
+
+    <TextView
+        android:id="@+id/descriptionLabel"
+        style="@style/AboutText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:text="@string/about_screen_description_info"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/descriptionLabelTitle"/>
+
+    <TextView
+        android:id="@+id/locationLabelTitle"
+        style="@style/AboutSubTitleText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/about_screen_location_info_title"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/descriptionLabel"/>
+
+    <TextView
+        android:id="@+id/locationLabel"
+        style="@style/AboutText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:drawableRight="@drawable/ic_location_pin"
+        android:foreground="?selectableItemBackground"
+        android:text="@string/about_screen_location_info"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/locationLabelTitle"/>
+
+    <ImageView
+        android:id="@+id/developerLogo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:src="@drawable/logo_undabot"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/locationLabel"/>
+
+    <TextView
+        android:id="@+id/developedLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="4dp"
+        android:text="@string/about_screen_developed_by_info"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/developerLogo"/>
+
+    <View
+        android:id="@+id/developerButton"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="?selectableItemBackground"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/locationLabel"/>
+
+</merge>

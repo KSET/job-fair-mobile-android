@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="?selectableItemBackground"
+    android:padding="15dp">
+
+    <ImageView
+        android:id="@+id/image"
+        android:layout_width="@dimen/event_list_item_image_size"
+        android:layout_height="@dimen/event_list_item_image_size"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@drawable/ic_placeholder"/>
+
+    <android.support.v7.widget.AppCompatTextView
+        android:id="@+id/title"
+        style="@style/ListTitleText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:ellipsize="end"
+        android:lines="2"
+        android:paddingRight="5dp"
+        app:layout_constraintLeft_toRightOf="@+id/image"
+        app:layout_constraintRight_toLeftOf="@+id/addToCalendarButton"
+        app:layout_constraintTop_toTopOf="@+id/image"
+        tools:text="Some cool title"/>
+
+    <android.support.v7.widget.AppCompatTextView
+        android:id="@+id/date_time"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:gravity="center_vertical"
+        android:textAppearance="@style/ListSubTitleText"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="@+id/title"
+        tools:text="May 18, 12:00"/>
+
+    <android.support.v7.widget.AppCompatImageButton
+        android:id="@+id/addToCalendarButton"
+        style="@style/CalendarButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="4dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <android.support.v7.widget.AppCompatTextView
+        android:id="@+id/in_progress_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/in_progress_background"
+        android:includeFontPadding="false"
+        android:padding="4dp"
+        android:text="@string/event_info_currently_in_progress_label"
+        android:textAllCaps="true"
+        android:textColor="@color/white"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"/>
+
+</android.support.constraint.ConstraintLayout>

@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clipToPadding="false"
+    android:fillViewport="true"
+    android:paddingBottom="10dp">
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clipToPadding="false"
+        android:padding="20dp">
+
+        <ImageView
+            android:id="@+id/companyLogo"
+            android:layout_width="@dimen/presentation_details_company_logo_size"
+            android:layout_height="@dimen/presentation_details_company_logo_size"
+            android:layout_marginTop="10dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@drawable/ic_calendar_add"/>
+
+        <android.support.v7.widget.AppCompatTextView
+            android:id="@+id/title"
+            style="@style/DetailTitleText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:paddingLeft="15dp"
+            android:paddingTop="5dp"
+            app:layout_constraintLeft_toRightOf="@+id/companyLogo"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/companyLogo"
+            tools:text="Some presentation title"/>
+
+        <android.support.constraint.Barrier
+            android:id="@+id/headerBarrier"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:barrierDirection="bottom"
+            app:constraint_referenced_ids="companyLogo,title"/>
+
+        <android.support.v7.widget.AppCompatTextView
+            android:id="@+id/time"
+            style="@style/DetailText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:drawableLeft="@drawable/ic_time"
+            android:drawablePadding="5dp"
+            android:gravity="center_vertical"
+            app:layout_constraintLeft_toLeftOf="@+id/companyLogo"
+            app:layout_constraintTop_toBottomOf="@+id/headerBarrier"
+            tools:text="25.5. 11:30 - 12:30"/>
+
+        <android.support.v7.widget.AppCompatTextView
+            android:id="@+id/location"
+            style="@style/DetailText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:drawableLeft="@drawable/ic_location_pin"
+            android:drawablePadding="5dp"
+            android:gravity="center_vertical"
+            app:layout_constraintLeft_toLeftOf="@+id/time"
+            app:layout_constraintTop_toBottomOf="@+id/time"
+            tools:text="Dvorana Naboo"/>
+
+        <android.support.v7.widget.AppCompatImageButton
+            android:id="@+id/addToCalendarButton"
+            style="@style/CalendarButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="?selectableItemBackgroundBorderless"
+            android:padding="4dp"
+            android:src="@drawable/ic_calendar_add"
+            app:layout_constraintBottom_toBottomOf="@+id/location"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/time"/>
+
+        <android.support.v7.widget.AppCompatTextView
+            android:id="@+id/description"
+            style="@style/DetailText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:drawablePadding="5dp"
+            android:gravity="center_vertical"
+            app:layout_constraintLeft_toLeftOf="@+id/time"
+            app:layout_constraintTop_toBottomOf="@+id/location"
+            tools:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed felis nisl, mattis id auctor eu, eleifend in ligula. Morbi ullamcorper sodales est eu fermentum. Nulla eleifend posuere tempor. Vivamus odio orci, tristique eu dapibus eu, ultricies at metus. Cras nisl arcu, auctor ac leo a, venenatis varius tellus. In ac libero lectus."/>
+
+        <TextView
+            android:id="@+id/aboutPresenter"
+            style="@style/DetailSubtitleText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="@string/event_details_screen_presenters_info_title"
+            android:textSize="16sp"
+            app:layout_constraintLeft_toLeftOf="@+id/description"
+            app:layout_constraintTop_toBottomOf="@+id/description"/>
+
+        <ImageView
+            android:id="@+id/presenterImage"
+            android:layout_width="@dimen/presentation_details_presenter_image_size"
+            android:layout_height="@dimen/presentation_details_presenter_image_size"
+            android:layout_marginTop="15dp"
+            app:layout_constraintLeft_toLeftOf="@+id/aboutPresenter"
+            app:layout_constraintTop_toBottomOf="@+id/aboutPresenter"
+            android:src="@drawable/placeholder_lecturer"/>
+
+        <android.support.v7.widget.AppCompatTextView
+            android:id="@+id/presentersBio"
+            style="@style/DetailText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            app:layout_constraintLeft_toRightOf="@id/presenterImage"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@id/presenterImage"
+            tools:text="Morbi ullamcorper sodales est eu fermentum. Nulla eleifend posuere tempor. Vivamus odio orci, tristique eu dapibus eu, ultricies at metus. Cras nisl arcu, auctor ac leo a, venenatis varius tellus. In ac libero lectus."/>
+
+        <android.support.v7.widget.AppCompatButton
+            android:id="@+id/companyDetailsButton"
+            style="@style/BorderedButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginTop="30dp"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/presentersBio"
+            tools:text="Read more about Company"/>
+
+    </android.support.constraint.ConstraintLayout>
+
+</ScrollView>
