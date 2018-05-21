@@ -59,3 +59,11 @@ Below is the list of those files or values and instructions for the setup.
 ### Release application signing
 
 - Add release keystore to `secrets` directory and provide release `signingConfiguration` in app `build.gradle` file
+
+# Developed by Undabot
+
+[![undabot_logo](https://user-images.githubusercontent.com/12301477/40064040-fcf22afe-585e-11e8-9315-9ecf70ebad7f.png)](https://undabot.com)
+
+## About Undabot
+
+We are coders, makers, thinkers, and creators of **#mobilemoments**. Would you like to join us? Check out the open positions at our [Careers](https://undabot.com/careers/) page!
