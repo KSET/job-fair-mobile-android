@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <shape
+            android:shape="rectangle">
+            <solid android:color="#F2F2F2"/>
+            <stroke
+                android:width="0.5dp"
+                android:color="@color/defaultStrokeColor"/>
+            <corners android:radius="12dp"/>
+        </shape>
+    </item>
+    <item
+        android:gravity="right|center_vertical"
+        android:right="16dp">
+        <rotate
+            android:fromDegrees="180">
+            <bitmap
+                android:src="@drawable/ic_arrow_up"/>
+        </rotate>
+    </item>
+</layer-list>

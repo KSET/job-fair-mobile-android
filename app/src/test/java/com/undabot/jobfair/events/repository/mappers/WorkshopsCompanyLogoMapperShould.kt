@@ -1,9 +1,9 @@
 package com.undabot.jobfair.events.repository.mappers
 
-import WorkshopsQuery
 import com.undabot.jobfair.Given
 import com.undabot.jobfair.Then
 import com.undabot.jobfair.When
+import com.undabot.jobfair.WorkshopsQuery
 import com.undabot.jobfair.core.entities.Image
 import com.undabot.jobfair.equals
 import org.junit.Before
@@ -46,7 +46,7 @@ class WorkshopsCompanyLogoMapperShould {
     }
 
     private fun logoResource(large: WorkshopsQuery.Large?) =
-            WorkshopsQuery.Logo("", large)
+        WorkshopsQuery.Logo("", large)
 
     private fun `map is requested`() {
         image = mapper.map(logoResource)

@@ -1,7 +1,7 @@
 package com.undabot.jobfair.companies.repository.mappers
 
-import IndustriesQuery
 import com.undabot.jobfair.Given
+import com.undabot.jobfair.IndustriesQuery
 import com.undabot.jobfair.Then
 import com.undabot.jobfair.When
 import com.undabot.jobfair.companies.entities.Industry

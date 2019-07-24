@@ -1,28 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<com.google.android.material.card.MaterialCardView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/item"
+    android:id="@+id/card"
+    style="@style/DefaultCardView"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:foreground="?selectableItemBackgroundBorderless"
-    android:orientation="vertical"
-    android:padding="@dimen/companies_padding">
+    android:foreground="?selectableItemBackground">
 
-    <ImageView
-        android:id="@+id/logo"
-        android:layout_width="72dp"
-        android:layout_height="72dp"
-        android:layout_gravity="center_horizontal"
-        tools:src="@drawable/ic_placeholder"/>
-
-    <TextView
-        android:id="@+id/title"
+    <LinearLayout
+        android:id="@+id/item"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
-        android:paddingTop="@dimen/companies_item_top_padding"
-        android:textAppearance="@style/ListTitleText"
-        tools:text="Company name"/>
+        android:layout_height="140dp"
+        android:orientation="vertical">
 
-</LinearLayout>
+        <TextView
+            android:id="@+id/title"
+            style="@style/ListTitleText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="8dp"
+            android:maxLines="1"
+            android:textSize="12sp"
+            tools:text="Company name"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/defaultStrokeColor"/>
+
+        <ImageView
+            android:id="@+id/logo"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:contentDescription="@string/company_logo"
+            android:padding="8dp"
+            tools:src="@drawable/ic_placeholder"/>
+
+    </LinearLayout>
+
+</com.google.android.material.card.MaterialCardView>

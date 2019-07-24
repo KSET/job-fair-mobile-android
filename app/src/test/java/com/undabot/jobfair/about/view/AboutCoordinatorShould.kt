@@ -1,6 +1,6 @@
 package com.undabot.jobfair.about.view
 
-import com.nhaarman.mockito_kotlin.verify
+import com.nhaarman.mockitokotlin2.verify
 import com.undabot.jobfair.Then
 import com.undabot.jobfair.When
 import com.undabot.jobfair.about.Links
@@ -70,12 +70,6 @@ class AboutCoordinatorShould {
     fun `open day two stream url when day two is pressed`() {
         When { coordinator.onDayTwoStreamPressed() }
         Then { verify(presenter).openUrl(Links.DAY_TWO_STREAM) }
-    }
-
-    @Test
-    fun `share job fair url when share is pressed`() {
-        When { coordinator.onSharePressed() }
-        Then { verify(presenter).shareUrl(Links.WEB) }
     }
 
     @Test

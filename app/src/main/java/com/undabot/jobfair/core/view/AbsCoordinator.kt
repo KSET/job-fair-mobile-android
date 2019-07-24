@@ -11,7 +11,10 @@ open class AbsCoordinator<V, out P : BasePresenter<V>>(
 
     override fun unbind(view: V) {
         presenter.unbind(view)
+        onUnbind()
     }
 
     override fun onBind() {}
+
+    override fun onUnbind() {}
 }

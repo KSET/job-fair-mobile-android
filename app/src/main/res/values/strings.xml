@@ -8,20 +8,22 @@
     <string name="info">Info</string>
     <string name="event_info_currently_in_progress_label">In progress</string>
     <string name="company_details_button_format">Read more about %s</string>
+    <string name="company_details_booth_format">Navigate to %s</string>
+    <string name="company_logo">Company logo</string>
     <string name="general_error_message">Error occurred. Please try again.</string>
-    <string name="events_screen_day_one_tab_name">Day one</string>
-    <string name="events_screen_day_two_tab_name">Day two</string>
+    <string name="events_screen_day_one_tab_name">15.5.</string>
+    <string name="events_screen_day_two_tab_name">16.5.</string>
     <string name="filter_by_industry">Filter by industry:</string>
     <string name="loremipsum">War! The Republic is crumbling under attacks by the ruthless Sith Lord, Count Dooku. There are heroes on both sides. Evil is everywhere. In a stunning move, the fiendish droid leader, General Grievous, has swept into the Republic capital and kidnapped Chancellor Palpatine, leader of the Galactic Senate. As the Separatist Droid Army attempts to flee the besieged capital with their valuable hostage, two Jedi Knights lead a desperate mission to rescue the captive Chancellor....</string>
     <string name="go_to_website">Go to website</string>
     <string name="title_activity_maps">Map</string>
     <string name="about_title">About</string>
-    <string name="about_screen_date_info">23 - 24 May 2018</string>
+    <string name="about_screen_date_info">15 – 16 May 2019</string>
     <string name="about_screen_date_info_title">Date</string>
     <string name="about_screen_time_info_title">Time</string>
-    <string name="about_screen_time_info">"• Booths 9h - 16h\n• Presentations 9h - 16h \n• Workshops 9h - 16:30h \n• Loosen Up party: May 23rd, 20h"</string>
+    <string name="about_screen_time_info">"• Booths <b>9h - 16h</b>\n• Presentations on <b>Wednesday 10h - 16h</b>\n• Presentations on <b>Thursday 10h - 15:30h</b>\n• Workshops on <b>Wednesday 11h - 16:30h</b>\n• Workshops on <b>Thursday11h - 14:30h</b>\n• Loosen Up party: <b>May 15th, 20h</b>"</string>
     <string name="about_screen_about_info_title">Description</string>
-    <string name="about_screen_description_info">Job Fair is the biggest career fair in Croatia which includes over 90 companies and is visited by over 3,000 students. The fair is held in the halls of the Faculty of Electrical Engineering and Computing in Zagreb. The goal is to offer students the chance to see what job and career opportunities there are in Croatia, as well as abroad, and to connect employers with the best students of the University of Zagreb.</string>
+    <string name="about_screen_description_info">Job Fair is the biggest career fair in Croatia which includes over 110 companies and is visited by over 3,000 students. The fair is held in the halls of the Faculty of Electrical Engineering and Computing in Zagreb. The goal is to offer students the chance to see what job and career opportunities there are in Croatia, as well as abroad, and to connect employers with the best students of the University of Zagreb.</string>
     <string name="about_screen_web_link_text">Web</string>
     <string name="about_screen_email_link_text">Email</string>
     <string name="about_screen_facebook_link_text">Facebook</string>
@@ -31,16 +33,90 @@
     <string name="about_screen_location_info_title">Location</string>
     <string name="about_screen_location_info">FER, Unska 3, Zagreb</string>
     <string name="about_screen_stream_info_title">Live Stream</string>
-    <string name="about_screen_stream_day_one_title">Day One</string>
-    <string name="about_screen_stream_day_two_title">Day Two</string>
+    <string name="about_screen_stream_day_one_title">15 May</string>
+    <string name="about_screen_stream_day_two_title">16 May</string>
     <string name="about_screen_developed_by_info">Developed by Undabot</string>
     <string name="share">Share</string>
     <string name="cocktail">Cocktail</string>
     <string name="workshop_time">Workshop</string>
     <string name="presentation_time">Presentation</string>
     <string name="about">About</string>
+    <string name="agenda">Agenda</string>
     <string name="industry">Industry</string>
     <string name="event_details_screen_presenters_info_title">Presenter</string>
     <string name="previous">Previous</string>
     <string name="next">Next</string>
+
+    <string name="login_screen_email_label">Email</string>
+    <string name="login_screen_email_error">Wrong email</string>
+    <string name="login_screen_password_label">Password</string>
+    <string name="login_screen_password_error">Wrong password</string>
+    <string name="login_screen_login_button">Login</string>
+    <string name="login_screen_forgot_password">Forgot?</string>
+
+    <string name="splash_screen_login_button">Login</string>
+    <string name="splash_screen_skip_button">I don\'t have username</string>
+
+    <string name="reset_password_screen_forget_button">Reset my password</string>
+    <string name="reset_password_screen_successful_reset">You successfully reseted your password. Check your email!</string>
+
+    <string name="bottom_navigation_item_assistance">Assistance</string>
+    <string name="bottom_navigation_item_drinks">Drinks</string>
+    <string name="bottom_navigation_item_scan_qr">Scan QR code</string>
+    <string name="bottom_navigation_item_submit_or_edit_cv">Submit or edit CV</string>
+    <string name="bottom_navigation_item_submit_cv">Submit CV</string>
+    <string name="maps">Maps</string>
+
+    <string name="assistance">Assistance</string>
+    <string name="assistance_label">What do you need help for?</string>
+    <string name="assistance_button">Ask for assistance</string>
+    <string name="assistance_hint">Type something (Optional)</string>
+    <string name="assistance_dialog_title">Assistance successfully requested!</string>
+    <string name="ok">OK</string>
+
+    <string name="drinks">Drinks</string>
+    <string name="drinks_order">Order</string>
+    <string name="drinks_empty_selection_message">Please increase wanted drink(s) count!</string>
+    <string name="drinks_dialog_title">Your order is sent!</string>
+    <string name="drinks_macchiato">Macchiato</string>
+    <string name="drinks_espresso">Espresso</string>
+    <string name="drinks_water">Water</string>
+
+    <string name="support_popup_drinks_success_message">Your order is sent!</string>
+    <string name="support_popup_assistance_success_message">Assistance is on the way!</string>
+    <string name="support_popup_you_ordered">You ordered:</string>
+    <string name="support_popup_you_asked_for">You asked for:</string>
+
+    <string name="event_rating_title">Tap to add rating</string>
+    <string name="event_description_title">Description</string>
+    <string name="event_bio_title">Bio</string>
+    <string name="event_details_location_text_format">Navigate to %s</string>
+    <string name="event_details_time_text_format">%sh</string>
+    <string name="event_details_rating_confirm_title">Confirm your rating</string>
+    <string name="event_details_confirm_rating_value_format">(%d)</string>
+    <string name="cancel">Cancel</string>
+    <string name="event_details_rating_success_message">Thank you for rating event!</string>
+    <string name="event_details_company_details_button">Company details</string>
+    <string name="calendar">Add to calendar</string>
+    <string name="sign_out_button">Sign out</string>
+    <string name="account">Account</string>
+    <string name="company_name_label">Company name</string>
+    <string name="user_name_label">Name</string>
+    <string name="qr_code_label">My CV QR Code</string>
+
+    <string name="scan_qr_code">Scan QR Code</string>
+    <string name="camera_permission_granted">Permission Granted, Now you can access camera</string>
+    <string name="camera_permission_denied">Permission Denied, You cannot access and camera</string>
+    <string name="camera_permission_allow_permission">You need to allow access to camera permission in order for QR scan to work</string>
+
+    <string name="student_review_ambition">Ambition</string>
+    <string name="student_review_social_skills">Social skills</string>
+    <string name="student_review_technical_skills">Technical skills</string>
+    <string name="student_review_notes_about_the_student">Notes about the student</string>
+    <string name="student_review_submit">Submit</string>
+
+    <string name="submit_cv">Submit CV</string>
+    <string name="student_review_rate_label">Rate Student</string>
+    <string name="presentation">Presentation</string>
+    <string name="workshop">Workshop</string>
 </resources>

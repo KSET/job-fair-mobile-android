@@ -27,11 +27,11 @@ class CompanyDetailsScreen : BaseFragment(), CompanyDetails.View {
         private const val EXTRA_PARAMS = "extra_params"
 
         fun with(params: CompanyViewModel) =
-                CompanyDetailsScreen().apply {
-                    arguments = Bundle().apply {
-                        putParcelable(EXTRA_PARAMS, params)
-                    }
+            CompanyDetailsScreen().apply {
+                arguments = Bundle().apply {
+                    putParcelable(EXTRA_PARAMS, params)
                 }
+            }
     }
 
     @Inject lateinit var coordinator: CompanyDetails.Coordinator
@@ -59,7 +59,7 @@ class CompanyDetailsScreen : BaseFragment(), CompanyDetails.View {
                 else -> showGeneralErrorMessage()
             }
         }
-        booth.setTextOrHideIfEmpty(viewModel.booth.location)
+        booth.setTextOrHideIfEmpty(R.string.company_details_booth_format, viewModel.booth.location)
         booth.setOnClickListener { BoothsActivity.startWith(context!!, viewModel.booth) }
         aboutCompany.text = viewModel.description
         categories.text = viewModel.industry
@@ -84,9 +84,9 @@ class CompanyDetailsScreen : BaseFragment(), CompanyDetails.View {
     }
 
     private fun loadLogoImage(url: String) =
-            ImageUtils.load(
-                    context = context!!,
-                    imageUrl = url,
-                    imageView = logo
-            )
+        ImageUtils.load(
+            context = context!!,
+            imageUrl = url,
+            imageView = logo
+        )
 }

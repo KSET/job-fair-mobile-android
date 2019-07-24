@@ -1,6 +1,6 @@
 package com.undabot.jobfair.booths.repository.mappers
 
-import BoothsQuery
+import com.undabot.jobfair.BoothsQuery
 import com.undabot.jobfair.booths.entities.Booth
 
 class BoothMapper(

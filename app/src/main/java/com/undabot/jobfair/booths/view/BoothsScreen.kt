@@ -3,14 +3,15 @@ package com.undabot.jobfair.booths.view
 import android.content.res.Resources
 import android.graphics.Bitmap
 import android.graphics.Canvas
+import android.graphics.drawable.Drawable
 import android.os.Bundle
-import android.support.v4.content.ContextCompat
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import com.bumptech.glide.request.RequestOptions
-import com.bumptech.glide.request.target.SimpleTarget
+import com.bumptech.glide.request.target.CustomTarget
 import com.bumptech.glide.request.transition.Transition
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
@@ -51,14 +52,14 @@ import javax.inject.Inject
 class BoothsScreen : BaseFragment(), BoothsContract.View, OnMapReadyCallback {
 
     companion object {
-        private val EXTRA_BOOTH_LOCATION = "extra_booth_location"
+        private const val EXTRA_BOOTH_LOCATION = "extra_booth_location"
 
         fun newInstance(boothLocation: LocationInfo): BoothsScreen =
-                BoothsScreen().apply {
-                    arguments = Bundle().apply {
-                        putParcelable(EXTRA_BOOTH_LOCATION, boothLocation)
-                    }
+            BoothsScreen().apply {
+                arguments = Bundle().apply {
+                    putParcelable(EXTRA_BOOTH_LOCATION, boothLocation)
                 }
+            }
     }
 
     @Inject
@@ -75,7 +76,6 @@ class BoothsScreen : BaseFragment(), BoothsContract.View, OnMapReadyCallback {
         mapFragment.getMapAsync(this)
         markerPixelSize = resources.getDimensionPixelSize(R.dimen.booth_marker_size)
         coordinator.bind(this)
-        createMarkerPlaceholder()
     }
 
     override fun onCreateView(inflater: LayoutInflater,
@@ -85,11 +85,11 @@ class BoothsScreen : BaseFragment(), BoothsContract.View, OnMapReadyCallback {
     }
 
     override fun showLoading() {
-        loading.visibility = View.VISIBLE
+        loading?.visibility = View.VISIBLE
     }
 
     private fun hideLoading() {
-        loading.visibility = View.GONE
+        loading?.visibility = View.GONE
     }
 
     override fun showGeneralError() {
@@ -109,34 +109,38 @@ class BoothsScreen : BaseFragment(), BoothsContract.View, OnMapReadyCallback {
 
     override fun showCompanyDetails(company: Company) {
         CompanyDetailsContainerScreen.startWith(
-                context!!, arrayListOf(CompanyViewModel(company.id, company.image.thumb, company.name)))
+            context!!, arrayListOf(CompanyViewModel(company.id, company.image.thumb, company.name)))
     }
 
     override fun onMapReady(googleMap: GoogleMap) {
+        createMarkerPlaceholder()
         setupMap(googleMap)
         coordinator.onMapReady()
     }
 
     private fun addBoothOnMap(booth: BoothViewModel) {
         val boothMarker = map.addMarker(
-                MarkerOptions()
-                        .position(latLngFrom(booth))
-                        .icon(markerPlaceholder)
-                        .anchor(0.5f, 0.5f)
-                        .title(booth.title)
-                        .snippet(booth.snippet))
+            MarkerOptions()
+                .position(latLngFrom(booth))
+                .icon(markerPlaceholder)
+                .anchor(0.5f, 0.5f)
+                .title(booth.title)
+                .snippet(booth.snippet))
         boothMarker.tag = booth.company
 
-        GlideApp.with(context!!)
+        if (context != null) {
+            GlideApp.with(context!!)
                 .asBitmap()
                 .apply(RequestOptions().circleCrop())
                 .load(booth.company.image.thumb)
-                .into(object : SimpleTarget<Bitmap>(markerPixelSize, markerPixelSize) {
-                    override fun onResourceReady(resource: Bitmap,
-                                                 transition: Transition<in Bitmap>?) {
+                .into(object : CustomTarget<Bitmap>(markerPixelSize, markerPixelSize) {
+                    override fun onLoadCleared(placeholder: Drawable?) {}
+
+                    override fun onResourceReady(resource: Bitmap, transition: Transition<in Bitmap>?) {
                         boothMarker.setIcon(BitmapDescriptorFactory.fromBitmap(resource))
                     }
                 })
+        }
         if (hasSpecificBooth()) {
             focusOnMarker(booth, boothMarker)
         }
@@ -149,10 +153,10 @@ class BoothsScreen : BaseFragment(), BoothsContract.View, OnMapReadyCallback {
         if (locationInfo.geolocation == booth.location) {
             boothMarker.showInfoWindow()
             map.animateCamera(CameraUpdateFactory.newCameraPosition(CameraPosition.Builder()
-                    .target(LatLng(locationInfo.geolocation.latitude, locationInfo.geolocation.longitude))
-                    .bearing(CAMERA_ROTATION)
-                    .zoom(MAX_ZOOM_PREFERENCE)
-                    .build()))
+                .target(LatLng(locationInfo.geolocation.latitude, locationInfo.geolocation.longitude))
+                .bearing(CAMERA_ROTATION)
+                .zoom(MAX_ZOOM_PREFERENCE)
+                .build()))
         }
     }
 
@@ -161,23 +165,23 @@ class BoothsScreen : BaseFragment(), BoothsContract.View, OnMapReadyCallback {
         setupMapStyle()
 
         val mapOverlay = GroundOverlayOptions()
-                .image(BitmapDescriptorFactory.fromResource(R.drawable.floor_overlay))
-                .positionFromBounds(overlayBounds())
+            .image(BitmapDescriptorFactory.fromResource(R.drawable.floor_overlay))
+            .positionFromBounds(overlayBounds())
         mapOverlay.clickable(false)
         map.addGroundOverlay(mapOverlay)
         map.animateCamera(CameraUpdateFactory.newCameraPosition(CameraPosition.Builder()
-                .target(START_LOCATION)
-                .bearing(CAMERA_ROTATION)
-                .zoom(MIN_ZOOM_PREFERENCE)
-                .build()))
+            .target(START_LOCATION)
+            .bearing(CAMERA_ROTATION)
+            .zoom(MIN_ZOOM_PREFERENCE)
+            .build()))
         map.setMinZoomPreference(MIN_ZOOM_PREFERENCE)
         map.setMaxZoomPreference(MAX_ZOOM_PREFERENCE)
         map.setOnInfoWindowClickListener { handleMarkerInfoClick(it) }
         map.isBuildingsEnabled = false
         map.uiSettings.isRotateGesturesEnabled = false
         map.setLatLngBoundsForCameraTarget(
-                LatLngBounds(RESTRICTION_SOUTH_WEST_LOCATION,
-                        RESTRICTION_NORTH_EAST_LOCATION))
+            LatLngBounds(RESTRICTION_SOUTH_WEST_LOCATION,
+                RESTRICTION_NORTH_EAST_LOCATION))
         showDebugMarker()
     }
 
@@ -191,8 +195,8 @@ class BoothsScreen : BaseFragment(), BoothsContract.View, OnMapReadyCallback {
     }
 
     private fun overlayBounds() = LatLngBounds(
-            OVERLAY_SOUTH_WEST_LOCATION,
-            OVERLAY_NORTH_EAST_LOCATION)
+        OVERLAY_SOUTH_WEST_LOCATION,
+        OVERLAY_NORTH_EAST_LOCATION)
 
     private fun handleMarkerInfoClick(marker: Marker) {
         if (marker.tag is Company) {
@@ -201,9 +205,12 @@ class BoothsScreen : BaseFragment(), BoothsContract.View, OnMapReadyCallback {
     }
 
     private fun latLngFrom(booth: BoothViewModel) =
-            LatLng(booth.location.latitude, booth.location.longitude)
+        LatLng(booth.location.latitude, booth.location.longitude)
 
     private fun createMarkerPlaceholder() {
+        if (context == null) {
+            return
+        }
         val drawable = ContextCompat.getDrawable(context!!, R.drawable.ic_placeholder_booth_marker)!!
         val canvas = Canvas()
         val bitmap = Bitmap.createBitmap(drawable.intrinsicWidth, drawable.intrinsicHeight, Bitmap.Config.ARGB_8888)
@@ -218,8 +225,8 @@ class BoothsScreen : BaseFragment(), BoothsContract.View, OnMapReadyCallback {
             return
         }
         val ferMarker = map.addMarker(MarkerOptions()
-                .position(START_LOCATION)
-                .title(START_LOCATION.toString()))
+            .position(START_LOCATION)
+            .title(START_LOCATION.toString()))
 
         map.setOnCameraMoveListener {
             val position = map.cameraPosition.target

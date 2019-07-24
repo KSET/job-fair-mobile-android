@@ -1,54 +1,39 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
 
-    <style name="DetailTitleText" parent="TextAppearance.AppCompat">
-        <item name="fontFamily">@font/open_sans</item>
-        <item name="android:fontFamily">@font/open_sans</item>
-        <item name="android:textStyle">bold</item>
-        <item name="android:lineSpacingMultiplier">1.1</item>
-        <item name="android:textColor">@color/textColor</item>
-        <item name="android:textSize">22sp</item>
-    </style>
-
-    <style name="DetailText" parent="TextAppearance.AppCompat">
-        <item name="fontFamily">@font/open_sans</item>
-        <item name="android:fontFamily">@font/open_sans</item>
-        <item name="android:textStyle">normal</item>
-        <item name="android:lineSpacingMultiplier">1.2</item>
-        <item name="android:textColor">@color/textColor</item>
+    <style name="TextAppearance" parent="TextAppearance.AppCompat">
+        <item name="fontFamily">@font/montserrat_regular</item>
+        <item name="android:fontFamily">@font/montserrat_regular</item>
         <item name="android:textSize">16sp</item>
     </style>
 
-    <style name="DetailSubtitleText" parent="TextAppearance.AppCompat">
-        <item name="fontFamily">@font/open_sans</item>
-        <item name="android:fontFamily">@font/open_sans</item>
-        <item name="android:textStyle">bold</item>
-        <item name="android:lineSpacingMultiplier">1.2</item>
-        <item name="android:textColor">@color/textColor</item>
-        <item name="android:textSize">16sp</item>
+    <style name="TextAppearance.Bold">
+        <item name="fontFamily">@font/montserrat_bold</item>
+        <item name="android:fontFamily">@font/montserrat_bold</item>
     </style>
 
-    <style name="ListTitleText" parent="TextAppearance.AppCompat">
-        <item name="fontFamily">@font/open_sans</item>
-        <item name="android:fontFamily">@font/open_sans</item>
-        <item name="android:textStyle">bold</item>
-        <item name="android:lineSpacingMultiplier">1.2</item>
-        <item name="android:textColor">@color/textColor</item>
-        <item name="android:textSize">16sp</item>
-        <item name="android:ellipsize">end</item>
-        <item name="android:lines">2</item>
+    <style name="TextAppearance.ExtraBold">
+        <item name="fontFamily">@font/montserrat_extra_bold</item>
+        <item name="android:fontFamily">@font/montserrat_extra_bold</item>
     </style>
 
-    <style name="ListSubTitleText" parent="TextAppearance.AppCompat">
-        <item name="fontFamily">@font/open_sans</item>
-        <item name="android:fontFamily">@font/open_sans</item>
-        <item name="android:textColor">@color/subtextColor</item>
-        <item name="android:textSize">12sp</item>
-        <item name="android:maxLines">1</item>
+    <style name="TextAppearance.Light">
+        <item name="fontFamily">@font/montserrat_light</item>
+        <item name="android:fontFamily">@font/montserrat_light</item>
+    </style>
+    li
+
+    <style name="TextAppearance.Medium">
+        <item name="fontFamily">@font/montserrat_medium</item>
+        <item name="android:fontFamily">@font/montserrat_medium</item>
+    </style>
+
+    <style name="TextWebView" parent="TextAppearance.Bold">
+        <item name="android:textColor">@color/textColor</item>
+        <item name="android:textSize">14sp</item>
     </style>
 
     <style name="BorderedButton" parent="Widget.AppCompat.Button">
-        <item name="fontFamily">@font/open_sans_regular</item>
-        <item name="android:fontFamily">@font/open_sans_regular</item>
+        <item name="android:textAppearance">@style/TextAppearance.Bold</item>
         <item name="android:textColor">@color/colorPrimary</item>
         <item name="android:background">@drawable/border_button_background</item>
         <item name="android:textAllCaps">true</item>
@@ -58,45 +43,200 @@
         <item name="android:textSize">16sp</item>
     </style>
 
-    <style name="AboutSubTitleText">
-        <item name="android:textAppearance">@style/DetailSubtitleText</item>
-        <item name="android:paddingLeft">16dp</item>
-        <item name="android:paddingTop">8dp</item>
+    <style name="PagerButtonText" parent="TextAppearance.Bold">
+        <item name="android:lineSpacingMultiplier">1.2</item>
+        <item name="android:textColor">@color/pager_button_selector</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:maxLines">2</item>
     </style>
 
-    <style name="AboutText">
+    <style name="Button" parent="Widget.MaterialComponents.Button.UnelevatedButton">
+        <item name="android:textAppearance">@style/TextAppearance.Bold</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:background">@drawable/button_background</item>
+        <item name="android:gravity">center</item>
+        <item name="android:tint">@color/colorAccent</item>
+        <item name="tint">@color/colorAccent</item>
+        <item name="android:textSize">16sp</item>
+        <item name="cornerRadius">12dp</item>
+        <item name="android:editTextStyle">@style/TextInputLayout</item>
+    </style>
+
+    <style name="Button.Normal">
+        <item name="android:textAppearance">@style/TextAppearance</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:lines">1</item>
         <item name="android:paddingLeft">16dp</item>
         <item name="android:paddingRight">16dp</item>
-        <item name="android:paddingTop">4dp</item>
-        <item name="android:paddingBottom">8dp</item>
-        <item name="android:textAppearance">@style/DetailText</item>
     </style>
 
-    <style name="AboutSocialButton">
-        <item name="android:layout_height">60dp</item>
-        <item name="android:layout_width">90dp</item>
-        <item name="android:foreground">?selectableItemBackgroundBorderless</item>
-        <item name="android:padding">10dp</item>
-        <item name="android:gravity">center</item>
+    <style name="ButtonDrinks">
         <item name="android:textColor">@color/colorPrimary</item>
-        <item name="android:textSize">12sp</item>
+        <item name="android:background">@drawable/button_light_background</item>
+        <item name="android:elevation">5dp</item>
+    </style>
+
+    <style name="Button.Round">
+        <item name="cornerRadius">40dp</item>
+    </style>
+
+    <style name="RatingBar" parent="Widget.AppCompat.RatingBar.Indicator">
+        <item name="android:progressBackgroundTint">#A6384F7D</item>
+        <item name="android:progressTint">#FFD381</item>
+        <item name="android:secondaryProgressTint">#FFD381</item>
+        <item name="android:isIndicator">false</item>
+        <item name="android:scaleX">0.5</item>
+        <item name="android:scaleY">0.5</item>
+    </style>
+
+    <style name="RatingBar.Big">
+        <item name="android:scaleX">0.7</item>
+        <item name="android:scaleY">0.7</item>
     </style>
 
     <style name="MainToolbar" parent="Base.Widget.AppCompat.Toolbar">
-        <item name="android:background">@color/colorPrimary</item>
+        <item name="android:background">@color/white</item>
+        <item name="android:paddingTop">10dp</item>
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:minHeight">?attr/actionBarSize</item>
-        <item name="android:textColor">@color/white</item>
-        <item name="android:actionMenuTextColor">@color/white</item>
+        <item name="android:textColor">@color/textColor</item>
+        <item name="android:textColorSecondary">@color/textColor</item>
+        <item name="android:actionMenuTextColor">@color/textColor</item>
         <item name="elevation">0dp</item>
     </style>
 
-    <style name="ToolbarText" parent="TextAppearance.AppCompat.Widget.ActionBar.Title">
-        <item name="fontFamily">@font/open_sans</item>
-        <item name="android:fontFamily">@font/open_sans</item>
-        <item name="android:textStyle">bold</item>
+    <style name="ToolbarText" parent="TextAppearance.Bold">
+        <item name="titleTextColor">@color/toolbarContentColor</item>
+        <item name="android:textSize">18sp</item>
     </style>
+
+    <style name="ToolbarActionText" parent="TextAppearance.Medium">
+        <item name="titleTextColor">@color/toolbarContentColor</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="InputHintTextAppearance" parent="TextAppearance">
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="TextInputLayout" parent="Widget.Design.TextInputLayout">
+        <item name="hintTextAppearance">@style/InputHintTextAppearance</item>
+        <item name="errorTextAppearance">@style/TextAppearance</item>
+        <item name="android:textAppearance">@style/TextAppearance</item>
+        <item name="colorControlActivated">@color/subtextColor</item>
+        <item name="colorControlNormal">@color/subtextColor</item>
+        <item name="passwordToggleTint">@color/subtextColor</item>
+    </style>
+
+    <style name="Button.Light">
+        <item name="android:textColor">@color/colorPrimary</item>
+        <item name="android:background">@drawable/button_light_background</item>
+    </style>
+
+    <style name="BorderlessButton" parent="Widget.AppCompat.Button.Borderless">
+        <item name="android:textAppearance">@style/TextAppearance</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="TextAppearance.Tab" parent="TextAppearance.Medium">
+        <item name="android:textColor">@color/colorPrimary</item>
+        <item name="android:textSize">12.5sp</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:lines">1</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:ellipsize">end</item>
+    </style>
+
+    <style name="TabLayout" parent="Widget.MaterialComponents.TabLayout">
+        <item name="tabIndicatorHeight">0dp</item>
+        <item name="tabBackground">@drawable/tab_background</item>
+        <item name="tabTextAppearance">@style/TextAppearance.Tab</item>
+        <item name="tabSelectedTextColor">@color/white</item>
+    </style>
+
+    <style name="DetailTitleText" parent="TextAppearance.Bold">
+        <item name="android:lineSpacingMultiplier">1.1</item>
+        <item name="android:textColor">@color/textColor</item>
+        <item name="android:textSize">22sp</item>
+    </style>
+
+    <style name="DetailSubTitleText" parent="TextAppearance.Bold">
+        <item name="android:ellipsize">end</item>
+        <item name="android:lineSpacingExtra">5sp</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:fontWeight" tools:targetApi="o">600</item>
+        <item name="android:textColor">@color/subtextColor</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="ListTitleText" parent="TextAppearance.Bold">
+        <item name="android:lineSpacingMultiplier">1.2</item>
+        <item name="android:textColor">@color/textColor</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:ellipsize">end</item>
+    </style>
+
+    <style name="ListSubTitleText" parent="TextAppearance">
+        <item name="android:ellipsize">end</item>
+        <item name="android:lineSpacingExtra">5sp</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:textColor">@color/subtextColor</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="Text" parent="TextAppearance">
+        <item name="android:lineSpacingExtra">8sp</item>
+        <item name="android:textColor">@color/textColor</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="DefaultCardView" parent="Widget.MaterialComponents.CardView">
+        <item name="cardElevation">6dp</item>
+        <item name="cardCornerRadius">12dp</item>
+        <item name="strokeWidth">1px</item>
+        <item name="android:strokeColor">#E0E0E0</item>
+    </style>
+
+    <style name="FilterText" parent="TextAppearance">
+        <item name="android:textColor">@color/textColor</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:lines">1</item>
+    </style>
+
+    <style name="AboutText" parent="TextAppearance">
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="AboutSocialButton">
+        <item name="android:layout_height">40dp</item>
+        <item name="android:padding">8dp</item>
+        <item name="android:clipToPadding">false</item>
+        <item name="android:layout_width">40dp</item>
+        <item name="android:background">?selectableItemBackgroundBorderless</item>
+    </style>
+
+    <style name="AboutYouTubeButton" parent="DefaultCardView">
+        <item name="android:layout_height">60dp</item>
+        <item name="android:layout_width">0dp</item>
+    </style>
+
+    <style name="AboutYouTubeButtonText" parent="TextAppearance.Bold">
+        <item name="android:drawablePadding">8dp</item>
+        <item name="android:padding">10dp</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:textColor">@color/colorPrimary</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <!--DEPRECATED - bellow styles should be replaced with generic styles-->
 
     <style name="CalendarButton" parent="Base.Widget.AppCompat.ImageButton">
         <item name="android:background">?selectableItemBackgroundBorderless</item>
@@ -114,11 +254,8 @@
         <item name="android:foreground">?selectableItemBackground</item>
     </style>
 
-    <style name="FilterUnselectedText" parent="TextAppearance.AppCompat">
-        <item name="fontFamily">@font/open_sans</item>
-        <item name="android:fontFamily">@font/open_sans</item>
+    <style name="FilterUnselectedText" parent="TextAppearance.Bold">
         <item name="android:textAllCaps">true</item>
-        <item name="android:textStyle">bold</item>
         <item name="android:textColor">@color/textColor</item>
         <item name="android:textSize">14sp</item>
         <item name="android:ellipsize">end</item>
@@ -129,29 +266,9 @@
         <item name="android:textColor">@color/white</item>
     </style>
 
-    <style name="CompanyDetailSubtitleText">
-        <item name="android:paddingLeft">16dp</item>
-        <item name="android:paddingRight">16dp</item>
-        <item name="android:paddingTop">18dp</item>
-        <item name="android:paddingBottom">8dp</item>
-        <item name="android:textAppearance">@style/DetailSubtitleText</item>
-    </style>
-
-    <style name="CompanyDetailText">
-        <item name="android:paddingLeft">16dp</item>
-        <item name="android:paddingRight">16dp</item>
-        <item name="android:textAppearance">@style/DetailText</item>
-        <item name="android:lineSpacingMultiplier">1.2</item>
-    </style>
-
-    <style name="PagerButtonText" parent="TextAppearance.AppCompat">
-        <item name="fontFamily">@font/open_sans</item>
-        <item name="android:textStyle">bold</item>
-        <item name="android:lineSpacingMultiplier">1.2</item>
-        <item name="android:textColor">@color/pager_button_selector</item>
-        <item name="android:textSize">16sp</item>
-        <item name="android:ellipsize">end</item>
-        <item name="android:maxLines">2</item>
+    <style name="RateStudentLabel" parent="TextAppearance.Bold">
+        <item name="android:textColor">@color/textColor</item>
+        <item name="android:textSize">14sp</item>
     </style>
 
 </resources>

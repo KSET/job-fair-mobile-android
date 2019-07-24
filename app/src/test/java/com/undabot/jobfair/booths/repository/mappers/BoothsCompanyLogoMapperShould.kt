@@ -1,6 +1,6 @@
 package com.undabot.jobfair.booths.repository.mappers
 
-import BoothsQuery
+import com.undabot.jobfair.BoothsQuery
 import com.undabot.jobfair.Given
 import com.undabot.jobfair.Then
 import com.undabot.jobfair.When

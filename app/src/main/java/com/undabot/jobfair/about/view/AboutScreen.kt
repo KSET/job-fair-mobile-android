@@ -1,65 +1,38 @@
 package com.undabot.jobfair.about.view
 
-import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.support.annotation.ColorRes
-import android.support.v4.content.ContextCompat
-import android.support.v4.view.ViewCompat
-import android.view.Menu
-import android.view.MenuItem
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import com.undabot.jobfair.R
 import com.undabot.jobfair.about.di.AboutModule
 import com.undabot.jobfair.core.di.ApplicationComponent
-import com.undabot.jobfair.core.view.BaseActivity
+import com.undabot.jobfair.core.view.BaseFragment
 import com.undabot.jobfair.utils.canHandle
-import kotlinx.android.synthetic.main.about_screen.*
 import kotlinx.android.synthetic.main.about_screen_layout.*
 import javax.inject.Inject
 
-class AboutScreen : BaseActivity(), AboutContract.View {
+class AboutScreen : BaseFragment(), AboutContract.View {
 
     companion object {
-        fun startWith(context: Context) {
-            context.startActivity(Intent(context, AboutScreen::class.java))
-        }
+        fun newInstance() = AboutScreen()
     }
 
     @Inject lateinit var coordinator: AboutContract.Coordinator
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.about_screen)
-        setSupportActionBar(toolbar)
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
         setClickListeners()
         coordinator.bind(this)
+        timeLabel.text = getText(R.string.about_screen_time_info)
     }
 
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        toolbar.inflateMenu(R.menu.share)
-        toolbar.setOnMenuItemClickListener {
-            coordinator.onSharePressed()
-            true
-        }
-        appBarLayout.addOnOffsetChangedListener({ _, verticalOffset ->
-            when (toolbarIsCollapsed(verticalOffset)) {
-                true -> setToolbarContentColorWith(R.color.white)
-                false -> setToolbarContentColorWith(R.color.colorPrimary)
-            }
-        })
-        return true
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
-        return when (item?.itemId) {
-            android.R.id.home -> {
-                onBackPressed()
-                true
-            }
-            else -> super.onOptionsItemSelected(item)
-        }
+    override fun onCreateView(inflater: LayoutInflater,
+                              container: ViewGroup?,
+                              savedInstanceState: Bundle?): View? {
+        return inflater.inflate(R.layout.about_screen, container, false)
     }
 
     override fun onDestroy() {
@@ -78,19 +51,10 @@ class AboutScreen : BaseActivity(), AboutContract.View {
     }
 
     private fun openIntent(intent: Intent) =
-            when (canHandle(intent)) {
-                true -> startActivity(intent)
-                false -> showGeneralErrorMessage()
-            }
-
-    private fun setToolbarContentColorWith(@ColorRes id: Int) {
-        toolbar.setTitleTextColor(getColorFor(id))
-    }
-
-    private fun getColorFor(@ColorRes colorRes: Int) = ContextCompat.getColor(this, colorRes)
-
-    private fun toolbarIsCollapsed(verticalOffset: Int) =
-            collapsingToolbarLayout.height + verticalOffset < 2 * ViewCompat.getMinimumHeight(collapsingToolbarLayout)
+        when (context?.canHandle(intent)) {
+            true -> startActivity(intent)
+            else -> showGeneralErrorMessage()
+        }
 
     private fun setClickListeners() {
         webButton.setOnClickListener { coordinator.onWebPressed() }
@@ -98,7 +62,7 @@ class AboutScreen : BaseActivity(), AboutContract.View {
         facebookButton.setOnClickListener { coordinator.onFacebookPressed() }
         instagramButton.setOnClickListener { coordinator.onInstagramPressed() }
         youtubeButton.setOnClickListener { coordinator.onYouTubeChannelPressed() }
-        locationLabel.setOnClickListener { coordinator.onMapPressed() }
+        mapsButton.setOnClickListener { coordinator.onMapPressed() }
         dayOneStreamButton.setOnClickListener { coordinator.onDayOneStreamPressed() }
         dayTwoStreamButton.setOnClickListener { coordinator.onDayTwoStreamPressed() }
         developerButton.setOnClickListener { coordinator.onDeveloperInfoPressed() }

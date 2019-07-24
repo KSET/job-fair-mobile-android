@@ -1,7 +1,7 @@
 package com.undabot.jobfair.booths.repository
 
-import BoothsQuery
-import com.nhaarman.mockito_kotlin.whenever
+import com.nhaarman.mockitokotlin2.whenever
+import com.undabot.jobfair.BoothsQuery
 import com.undabot.jobfair.Given
 import com.undabot.jobfair.TestSchedulerProvider
 import com.undabot.jobfair.Then

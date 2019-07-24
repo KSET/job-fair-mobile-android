@@ -1,28 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
-  xmlns:app="http://schemas.android.com/apk/res-auto"
-  xmlns:tools="http://schemas.android.com/tools"
-  android:id="@+id/container_view"
-  android:layout_width="match_parent"
-  android:layout_height="match_parent"
-  tools:context="com.undabot.jobfair.home.view.MainActivity">
-
-  <android.support.v7.widget.RecyclerView
-    android:id="@+id/list"
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container_view"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/bottom_navigation_height"
-    android:clipToPadding="false"
-    android:overScrollMode="never"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+    tools:context="com.undabot.jobfair.home.view.MainActivity">
 
-  <ProgressBar
-    android:id="@+id/loading"
-    android:layout_width="@dimen/progress_bar"
-    android:layout_height="@dimen/progress_bar"
-    android:layout_gravity="center"
-    android:padding="@dimen/padding_progress"
-    android:progressTint="@color/colorAccent"
-    android:visibility="visible" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-</android.support.design.widget.CoordinatorLayout>
+        <androidx.appcompat.widget.AppCompatSpinner
+            android:id="@+id/filterSpinner"
+            android:layout_width="match_parent"
+            android:layout_height="42dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/filter_spinner_background"
+            android:dropDownWidth="match_parent"
+            android:dropDownVerticalOffset="42dp"
+            android:popupBackground="@drawable/filter_spinner_popup_background"
+            android:spinnerMode="dropdown"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clipToPadding="false"
+            android:overScrollMode="never"
+            android:paddingStart="12dp"
+            android:paddingTop="8dp"
+            android:paddingEnd="12dp"
+            android:paddingBottom="@dimen/bottom_navigation_height"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
+    </LinearLayout>
+
+    <ProgressBar
+        android:id="@+id/loading"
+        android:layout_width="@dimen/progress_bar"
+        android:layout_height="@dimen/progress_bar"
+        android:layout_gravity="center"
+        android:padding="@dimen/padding_progress"
+        android:progressTint="@color/colorAccent"
+        android:visibility="visible"/>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

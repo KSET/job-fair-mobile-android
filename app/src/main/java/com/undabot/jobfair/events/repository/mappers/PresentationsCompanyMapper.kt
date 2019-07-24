@@ -1,6 +1,6 @@
 package com.undabot.jobfair.events.repository.mappers
 
-import PresentationsQuery
+import com.undabot.jobfair.PresentationsQuery
 import com.undabot.jobfair.companies.entities.Company
 
 class PresentationsCompanyMapper(

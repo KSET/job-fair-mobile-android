@@ -1,10 +1,10 @@
 package com.undabot.jobfair.about.di
 
 import com.undabot.jobfair.about.view.AboutScreen
-import com.undabot.jobfair.core.di.scope.PerActivity
+import com.undabot.jobfair.core.di.scope.PerFragment
 import dagger.Subcomponent
 
-@PerActivity
+@PerFragment
 @Subcomponent(modules = [AboutModule::class])
 interface AboutComponent {
 

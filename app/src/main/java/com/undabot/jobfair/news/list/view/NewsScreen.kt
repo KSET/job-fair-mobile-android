@@ -1,10 +1,10 @@
 package com.undabot.jobfair.news.list.view
 
 import android.os.Bundle
-import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.undabot.jobfair.R
 import com.undabot.jobfair.core.di.ApplicationComponent
 import com.undabot.jobfair.core.view.BaseFragment
@@ -15,16 +15,15 @@ import com.undabot.jobfair.news.list.view.models.NewsViewModel
 import kotlinx.android.synthetic.main.screen_news.*
 import javax.inject.Inject
 import kotlinx.android.synthetic.main.screen_news.pull_to_refresh as pullToRefresh
-import kotlinx.android.synthetic.main.screen_news.view.container_view as coordinatorLayout
 
 class NewsScreen : BaseFragment(), NewsContract.View {
 
     @Inject
     lateinit var coordinator: NewsContract.Coordinator
 
-    private val newsListAdapter = NewsListAdapter(mutableListOf(), { list, position ->
+    private val newsListAdapter = NewsListAdapter(mutableListOf()) { list, position ->
         NewsDetailsContainerScreen.startWith(context!!, ArrayList(list), position)
-    })
+    }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.screen_news, container, false)

@@ -1,22 +1,27 @@
 package com.undabot.jobfair.companies.list.view
 
 import android.os.Bundle
-import android.support.v7.widget.GridLayoutManager
 import android.view.LayoutInflater
 import android.view.Menu
 import android.view.MenuInflater
-import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.undabot.jobfair.R
 import com.undabot.jobfair.companies.details.view.CompanyDetailsContainerScreen
 import com.undabot.jobfair.companies.entities.Industry
 import com.undabot.jobfair.companies.list.di.CompaniesModule
 import com.undabot.jobfair.companies.list.view.adapters.CompaniesAdapter
+import com.undabot.jobfair.companies.list.view.adapters.CompaniesFilterArrayAdapter
 import com.undabot.jobfair.companies.view.models.CompanyViewModel
 import com.undabot.jobfair.companies.view.models.IndustryViewModel
 import com.undabot.jobfair.core.di.ApplicationComponent
 import com.undabot.jobfair.core.view.BaseFragment
+import com.undabot.jobfair.core.view.SpacesItemDecoration
+import kotlinx.android.synthetic.main.screen_companies.*
 import kotlinx.android.synthetic.main.screen_companies.view.*
 import javax.inject.Inject
 
@@ -28,9 +33,7 @@ class CompaniesScreen : BaseFragment(), CompaniesContract.View {
         CompanyDetailsContainerScreen.startWith(activity!!, ArrayList(list), position)
     })
 
-    private var bottomSheetDialog: CompaniesFilterDialog.Builder? = null
-    private var selectedFilter = Industry.ALL_ITEMS_FILTER
-    var menu: Menu? = null
+    private var filterAdapter: ArrayAdapter<IndustryViewModel>? = null
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.screen_companies, container, false)
@@ -38,22 +41,16 @@ class CompaniesScreen : BaseFragment(), CompaniesContract.View {
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(R.menu.info_and_filter, menu)
-        this.menu = menu
         super.onCreateOptionsMenu(menu, inflater)
-    }
-
-    override fun onMenuItemClick(it: MenuItem): Boolean {
-        if (it.itemId == R.id.action_filter) {
-            openFilters()
-        }
-        return true
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
+        setupFilterSpinner()
         view?.let {
-            it.list.layoutManager = GridLayoutManager(activity, 2)
+            it.list.layoutManager = GridLayoutManager(activity, 2, RecyclerView.VERTICAL, false)
+            it.list.addItemDecoration(SpacesItemDecoration(R.dimen.companies_spacing))
             coordinator.bind(this)
             coordinator.companiesRequested()
             coordinator.industriesRequested()
@@ -61,32 +58,27 @@ class CompaniesScreen : BaseFragment(), CompaniesContract.View {
         }
     }
 
-    private fun openFilters() {
-        bottomSheetDialog?.let {
-            it.clickListener {
-                selectedFilter = it.id
-                coordinator.requestedFilterBy(it)
-            }.selectedFilter(selectedFilter).clearListener {
-                selectedFilter = Industry.ALL_ITEMS_FILTER
-                coordinator.companiesRequested()
-                displayFilterState(FilterState.Disabled)
-            }.build().show(activity!!.supportFragmentManager, "")
-        }
-    }
+    private fun setupFilterSpinner() {
+        filterAdapter = CompaniesFilterArrayAdapter(context!!)
 
-    private fun changeFilterIcon(filterState: FilterState, menuItem: MenuItem?) {
-        when (filterState) {
-            FilterState.Disabled -> menuItem?.setIcon(R.drawable.filter_empty)
-            FilterState.Enabled -> menuItem?.setIcon(R.drawable.filter_selected)
+        filterSpinner.adapter = filterAdapter
+        filterSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long) {
+                filterAdapter?.getItem(position)?.let { item ->
+                    if(item.id == Industry.ALL_ITEMS_FILTER) {
+                        coordinator.companiesRequested()
+                    } else {
+                        coordinator.requestedFilterBy(item)
+                    }
+                }
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>) {}
         }
     }
 
     override fun displayCompanies(items: List<CompanyViewModel>) {
         adapter.updateItems(items)
-    }
-
-    override fun displayFilterState(filterState: FilterState) {
-        changeFilterIcon(filterState, menu?.findItem(R.id.action_filter))
     }
 
     override fun displayError() {
@@ -102,7 +94,7 @@ class CompaniesScreen : BaseFragment(), CompaniesContract.View {
     }
 
     override fun prepareIndustries(items: List<IndustryViewModel>) {
-        bottomSheetDialog = CompaniesFilterDialog.Builder().industries(items)
+        filterAdapter?.addAll(items)
     }
 
     override fun displayEmpty() {

@@ -1,7 +1,7 @@
 package com.undabot.jobfair.events.repository.mappers
 
-import PresentationsQuery
 import com.undabot.jobfair.Given
+import com.undabot.jobfair.PresentationsQuery
 import com.undabot.jobfair.Then
 import com.undabot.jobfair.When
 import com.undabot.jobfair.core.entities.Image

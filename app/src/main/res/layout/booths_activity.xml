@@ -7,7 +7,7 @@
 
     <include
         android:id="@+id/toolbar"
-        layout="@layout/toolbar_details"/>
+        layout="@layout/toolbar_modal"/>
 
     <FrameLayout
         android:id="@+id/fragmentContainer"

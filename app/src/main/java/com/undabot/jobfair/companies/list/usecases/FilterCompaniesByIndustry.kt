@@ -12,7 +12,6 @@ constructor(private val repository: CompaniesRepository,
             private val mainScheduler: MainScheduler) {
 
     fun filter(industry: Industry, presenter: DisplaysFiltered) {
-        presenter.displayFilterState(industry.id != Industry.ALL_ITEMS_FILTER)
         repository.fetchCompanies()
                 .observeOn(mainScheduler.get())
                 .subscribe(
@@ -32,7 +31,6 @@ constructor(private val repository: CompaniesRepository,
     }
 
     interface DisplaysFiltered {
-        fun displayFilterState(isEnabled: Boolean)
         fun displayFilteredCompanies(companies: List<Company>)
         fun displayEmpty()
         fun displayError()

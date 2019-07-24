@@ -1,50 +1,68 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                                             xmlns:app="http://schemas.android.com/apk/res-auto"
-                                             xmlns:tools="http://schemas.android.com/tools"
-                                             android:layout_width="match_parent"
-                                             android:layout_height="wrap_content"
-                                             android:background="?selectableItemBackground"
-                                             android:paddingLeft="@dimen/news_header_padding_horizontal"
-                                             android:paddingRight="@dimen/news_header_padding_horizontal"
-                                             android:paddingTop="@dimen/news_header_padding_vertical">
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             xmlns:app="http://schemas.android.com/apk/res-auto"
+             xmlns:tools="http://schemas.android.com/tools"
+             android:layout_width="match_parent"
+             android:layout_height="135dp"
+             android:clipToPadding="false"
+             android:paddingLeft="16dp"
+             android:paddingTop="4dp"
+             android:paddingRight="16dp"
+             android:paddingBottom="8dp">
 
-    <TextView
-        android:id="@+id/datetime"
-        android:layout_width="0dp"
+    <com.google.android.material.card.MaterialCardView
+        style="@style/DefaultCardView"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:textAppearance="@style/ListSubTitleText"
-        android:textStyle="normal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/image"
-        app:layout_constraintTop_toBottomOf="@+id/title"
-        app:layout_constraintVertical_bias="1.0"
-        tools:text="4.Svibanj 2017  •  08:49"/>
+        android:foreground="?selectableItemBackground"
+        android:outlineProvider="background"
+        app:cardUseCompatPadding="false">
 
-    <ImageView
-        android:id="@+id/image"
-        android:layout_width="76dp"
-        android:layout_height="76dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.003"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:src="@drawable/ic_placeholder"/>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="8dp">
 
-    <TextView
-        android:id="@+id/title"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:ellipsize="end"
-        android:maxLines="2"
-        android:textAppearance="@style/ListTitleText"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/image"
-        app:layout_constraintTop_toTopOf="@+id/image"
-        tools:text="Postani profesionalni stock photo model ide tekst dalje!"/>
+            <TextView
+                android:id="@+id/datetime"
+                style="@style/ListSubTitleText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginBottom="8dp"
+                android:maxLines="1"
+                android:paddingTop="4dp"
+                android:textAllCaps="false"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toEndOf="@+id/image"
+                app:layout_constraintTop_toBottomOf="@+id/title"
+                app:layout_constraintVertical_bias="1.0"
+                tools:text="4.Svibanj 2017  •  08:49"/>
 
-</android.support.constraint.ConstraintLayout>
+            <ImageView
+                android:id="@+id/image"
+                android:layout_width="74dp"
+                android:layout_height="0dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:src="@drawable/ic_placeholder"/>
+
+            <TextView
+                android:id="@+id/title"
+                style="@style/ListTitleText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginRight="8dp"
+                android:ellipsize="end"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/image"
+                app:layout_constraintTop_toTopOf="@+id/image"
+                tools:text="Postani profesionalni s skdfj klsdld  d fkj sdlfj tock photo model ide tekst dalje!"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
+</FrameLayout>

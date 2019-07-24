@@ -1,22 +1,22 @@
 package com.undabot.jobfair.events.details.view
 
-import com.undabot.jobfair.companies.view.models.CompanyViewModel
 import com.undabot.jobfair.core.view.AbsPresenter
-import com.undabot.jobfair.events.calendar.CalendarInfo
-import com.undabot.jobfair.events.view.EventViewModel
+import com.undabot.jobfair.events.details.usecases.EventDetails
+import com.undabot.jobfair.events.details.view.EventDetailsContract.Presenter
+import com.undabot.jobfair.events.details.view.EventDetailsContract.View
 import javax.inject.Inject
 
-class EventDetailsPresenter
-@Inject constructor() : AbsPresenter<EventDetailsContract.View>(),
-        EventDetailsContract.Presenter {
+class EventDetailsPresenter @Inject constructor() : AbsPresenter<View>(), Presenter {
 
-    override fun show(events: List<EventViewModel>) = onView { it.show(events) }
+    override fun show(eventDetails: EventDetails) = onView{
+        it.show(eventDetails)
+    }
 
-    override fun showEventAt(index: Int) = onView { it.showEventAt(index) }
+    override fun ratingSuccess() = onView {
+        it.showRatingSuccess()
+    }
 
-    override fun openCompanyDetailsFor(company: CompanyViewModel) =
-            onView { it.openCompanyDetailsFor(company) }
-
-    override fun addToCalendar(calendarInfo: CalendarInfo) =
-            onView { it.addToCalendar(calendarInfo) }
+    override fun ratingFailed() = onView {
+        it.showRatingFailed()
+    }
 }

@@ -2,20 +2,23 @@ package com.undabot.jobfair.events.list.view
 
 import android.content.Context
 import android.os.Bundle
-import android.support.v4.app.Fragment
-import android.support.v4.app.FragmentManager
-import android.support.v4.app.FragmentStatePagerAdapter
+import android.os.Parcelable
 import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentStatePagerAdapter
 import com.undabot.jobfair.R
 import com.undabot.jobfair.core.di.ApplicationComponent
 import com.undabot.jobfair.core.view.BaseFragment
 import com.undabot.jobfair.events.entities.Event
 import com.undabot.jobfair.events.list.di.EventsModule
 import com.undabot.jobfair.events.view.EventsViewModel
+import com.undabot.jobfair.utils.setupWithViewPager
 import kotlinx.android.synthetic.main.events_screen.*
+import java.util.*
 import javax.inject.Inject
 
 class EventsScreen : BaseFragment(), EventsContract.View {
@@ -23,20 +26,20 @@ class EventsScreen : BaseFragment(), EventsContract.View {
     @Inject lateinit var coordinator: EventsContract.Coordinator
 
     companion object {
-        private val EXTRA_EVENT_TYPE = "extra_event_type"
+        private const val EXTRA_EVENT_TYPE = "extra_event_type"
 
         fun newInstance(eventType: Event.Type): EventsScreen =
-                EventsScreen().apply {
-                    arguments = Bundle().apply {
-                        putString(EXTRA_EVENT_TYPE, eventType.name)
-                    }
+            EventsScreen().apply {
+                arguments = Bundle().apply {
+                    putString(EXTRA_EVENT_TYPE, eventType.name)
                 }
+            }
     }
 
     override fun onCreateView(
-            inflater: LayoutInflater,
-            container: ViewGroup?,
-            savedInstanceState: Bundle?
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View? {
         return inflater.inflate(R.layout.events_screen, container, false)
     }
@@ -65,12 +68,19 @@ class EventsScreen : BaseFragment(), EventsContract.View {
     }
 
     override fun showEvents(eventsViewModel: EventsViewModel) {
-        viewPager.adapter = EventsPagerAdapter(context!!, eventsViewModel,
-                eventTypeFromArguments(), childFragmentManager)
+        viewPager.adapter = EventsPagerAdapter(
+            context!!,
+            eventsViewModel,
+            eventTypeFromArguments(), childFragmentManager
+        )
         viewPager.offscreenPageLimit = 2
         tweakViewPagerBehaviourWithSwipeRefresh()
-        tabLayout.setupWithViewPager(viewPager)
         swipeRefresh.isRefreshing = false
+
+        tabLayout.setupWithViewPager(
+            viewPager = viewPager,
+            marginBetween = 8
+        )
     }
 
     private fun tweakViewPagerBehaviourWithSwipeRefresh() {
@@ -88,20 +98,21 @@ class EventsScreen : BaseFragment(), EventsContract.View {
     }
 
     private fun eventTypeFromArguments(): Event.Type =
-            Event.Type.valueOf(arguments?.getString(
-                    EXTRA_EVENT_TYPE, Event.Type.PRESENTATION.name).orEmpty())
+        Event.Type.valueOf(arguments?.getString(
+            EXTRA_EVENT_TYPE, Event.Type.PRESENTATION.name).orEmpty())
 
     class EventsPagerAdapter(
-            private val context: Context,
-            private val eventsViewModel: EventsViewModel,
-            private val eventType: Event.Type,
-            fragmentManager: FragmentManager
+        private val context: Context,
+        private val eventsViewModel: EventsViewModel,
+        private val eventType: Event.Type,
+        fragmentManager: FragmentManager
     ) : FragmentStatePagerAdapter(fragmentManager) {
 
+        @Suppress("UNCHECKED_CAST")
         override fun getItem(position: Int): Fragment {
             return when (position) {
-                0 -> EventsListFragment.newInstance(eventsViewModel.firstDay, eventType)
-                else -> EventsListFragment.newInstance(eventsViewModel.secondDay, eventType)
+                0 -> EventsListFragment.newInstance(eventsViewModel.firstDay as ArrayList<Parcelable>, eventType)
+                else -> EventsListFragment.newInstance(eventsViewModel.secondDay as ArrayList<Parcelable>, eventType)
             }
         }
 

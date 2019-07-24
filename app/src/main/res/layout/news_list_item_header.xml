@@ -1,36 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              xmlns:tools="http://schemas.android.com/tools"
-              android:layout_width="match_parent"
-              android:layout_height="wrap_content"
-              android:background="?selectableItemBackground"
-              android:orientation="vertical"
-              android:paddingBottom="@dimen/news_header_padding_vertical"
-              android:paddingLeft="@dimen/news_header_padding_horizontal"
-              android:paddingRight="@dimen/news_header_padding_horizontal"
-              android:paddingTop="@dimen/news_header_padding_vertical">
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             xmlns:app="http://schemas.android.com/apk/res-auto"
+             xmlns:tools="http://schemas.android.com/tools"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:clipToPadding="false"
+             android:foreground="?selectableItemBackground"
+             android:paddingLeft="16dp"
+             android:paddingRight="16dp"
+             android:paddingBottom="12dp">
 
-    <ImageView
-        android:id="@id/image"
-        android:layout_width="match_parent"
-        android:layout_height="144dp"
-        tools:src="@drawable/ic_placeholder"/>
-
-    <TextView
-        android:id="@id/title"
+    <com.google.android.material.card.MaterialCardView
+        style="@style/DefaultCardView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="@dimen/news_header_padding_vertical"
-        android:textAppearance="@style/ListTitleText"
-        tools:text="Postani profesionalni stock photo model ide tekst dalje!"/>
+        app:cardUseCompatPadding="false">
 
-    <TextView
-        android:id="@id/datetime"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingTop="@dimen/news_header_subtitle_padding"
-        android:textAppearance="@style/ListSubTitleText"
-        android:textStyle="normal"
-        tools:text="4.Svibanj 2017  •  08:49"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-</LinearLayout>
+            <ImageView
+                android:id="@+id/image"
+                android:layout_width="match_parent"
+                android:layout_height="95dp"
+                tools:src="@drawable/ic_placeholder"/>
+
+            <TextView
+                android:id="@+id/title"
+                style="@style/ListTitleText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="@dimen/news_header_padding_horizontal"
+                android:paddingTop="6dp"
+                android:paddingRight="@dimen/news_header_padding_horizontal"
+                tools:text="Postani profesionalni stock photo model ide tekst dalje!"/>
+
+            <TextView
+                android:id="@+id/datetime"
+                style="@style/ListSubTitleText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="@dimen/news_header_padding_horizontal"
+                android:paddingTop="8dp"
+                android:paddingRight="@dimen/news_header_padding_horizontal"
+                android:paddingBottom="@dimen/news_header_padding_vertical"
+                android:textAllCaps="false"
+                tools:text="4.Svibanj 2017  •  08:49"/>
+
+        </LinearLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+</FrameLayout>

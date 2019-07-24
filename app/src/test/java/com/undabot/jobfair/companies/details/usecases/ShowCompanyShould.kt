@@ -1,7 +1,7 @@
 package com.undabot.jobfair.companies.details.usecases
 
-import com.nhaarman.mockito_kotlin.verify
-import com.nhaarman.mockito_kotlin.whenever
+import com.nhaarman.mockitokotlin2.verify
+import com.nhaarman.mockitokotlin2.whenever
 import com.undabot.jobfair.And
 import com.undabot.jobfair.Given
 import com.undabot.jobfair.TestSchedulerProvider

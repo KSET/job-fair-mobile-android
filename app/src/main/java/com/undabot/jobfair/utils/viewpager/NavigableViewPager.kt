@@ -1,12 +1,12 @@
 package com.undabot.jobfair.utils.viewpager
 
 import android.content.Context
-import android.support.v4.view.ViewPager
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.FrameLayout
 import android.widget.TextView
+import androidx.viewpager.widget.ViewPager
 import com.undabot.jobfair.R
 import com.undabot.jobfair.utils.disable
 import com.undabot.jobfair.utils.enable
@@ -18,7 +18,7 @@ import kotlinx.android.synthetic.main.navigatable_pager.view.*
 import kotlinx.android.synthetic.main.navigatable_pager.view.pager as internalPager
 
 class NavigableViewPager(
-        context: Context, attributeSet: AttributeSet) : FrameLayout(context, attributeSet) {
+    context: Context, attributeSet: AttributeSet) : FrameLayout(context, attributeSet) {
 
     private lateinit var nextButton: TextView
     private lateinit var previousButton: TextView
@@ -36,7 +36,7 @@ class NavigableViewPager(
         nextButton = view.next
         previousButton.setOnClickListener { previousPage() }
         nextButton.setOnClickListener { nextPage() }
-        viewPager.addOnAdapterChangeListener({ _, _, _ -> updateButtonState() })
+        viewPager.addOnAdapterChangeListener { _, _, _ -> updateButtonState() }
         viewPager.addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
             override fun onPageScrollStateChanged(state: Int) {
             }
@@ -63,11 +63,12 @@ class NavigableViewPager(
     private fun updateButtonState() {
         when {
             viewPager.isFirstPage() && viewPager.isLastPage() -> {
+                tabDivider.visibility = View.GONE
                 viewPagerNavigationContainer.visibility = View.GONE
                 internalPager.setPadding(internalPager.paddingLeft,
-                        internalPager.paddingTop,
-                        internalPager.paddingRight,
-                        0)
+                    internalPager.paddingTop,
+                    internalPager.paddingRight,
+                    0)
             }
             viewPager.isFirstPage() -> {
                 nextButton.enable()

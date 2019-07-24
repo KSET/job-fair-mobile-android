@@ -5,22 +5,96 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:parentTag="android.support.constraint.ConstraintLayout">
+    tools:parentTag="androidx.constraintlayout.widget.ConstraintLayout">
+
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:padding="40dp"
+        android:src="@drawable/logo_black"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <TextView
+        android:id="@+id/streamLabelTitle"
+        style="@style/DetailSubTitleText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:paddingBottom="4dp"
+        android:text="@string/about_screen_stream_info_title"
+        android:textAllCaps="true"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/logo"/>
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/dayOneStreamButton"
+        style="@style/AboutYouTubeButton"
+        android:layout_height="64dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="5dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/dayTwoStreamButton"
+        app:layout_constraintTop_toBottomOf="@+id/streamLabelTitle">
+
+        <TextView
+            style="@style/AboutYouTubeButtonText"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="?selectableItemBackgroundBorderless"
+            android:drawableStart="@drawable/ic_youtube"
+            android:drawablePadding="10dp"
+            android:text="@string/about_screen_stream_day_one_title"/>
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/dayTwoStreamButton"
+        style="@style/AboutYouTubeButton"
+        android:layout_height="64dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintLeft_toRightOf="@+id/dayOneStreamButton"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/dayOneStreamButton">
+
+        <TextView
+            style="@style/AboutYouTubeButtonText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="?selectableItemBackgroundBorderless"
+            android:drawableStart="@drawable/ic_youtube"
+            android:drawablePadding="10dp"
+            android:text="@string/about_screen_stream_day_two_title"/>
+    </com.google.android.material.card.MaterialCardView>
 
     <TextView
         android:id="@+id/dateLabelTitle"
-        style="@style/AboutSubTitleText"
+        style="@style/DetailSubTitleText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="24dp"
         android:text="@string/about_screen_date_info_title"
+        android:textAllCaps="true"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"/>
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dayOneStreamButton"/>
 
     <TextView
         android:id="@+id/dateLabel"
-        style="@style/AboutText"
+        style="@style/Text"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="24dp"
         android:text="@string/about_screen_date_info"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -28,153 +102,67 @@
 
     <TextView
         android:id="@+id/timeLabelTitle"
-        style="@style/AboutSubTitleText"
+        style="@style/DetailSubTitleText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="24dp"
         android:text="@string/about_screen_time_info_title"
+        android:textAllCaps="true"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/dateLabel"/>
 
     <TextView
         android:id="@+id/timeLabel"
-        style="@style/AboutText"
+        style="@style/Text"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:background="@color/white"
-        android:lineSpacingExtra="2dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="8dp"
         android:text="@string/about_screen_time_info"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/timeLabelTitle"/>
 
-    <TextView
-        android:id="@+id/streamLabelTitle"
-        style="@style/AboutSubTitleText"
+    <View
+        android:id="@+id/divider"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="@string/about_screen_stream_info_title"
+        android:layout_height="1px"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="16dp"
+        android:background="#E0E0E0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/timeLabel"/>
 
-    <View
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:background="@color/white"
-        app:layout_constraintBottom_toTopOf="@id/socialLabelTitle"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/streamLabelTitle"/>
-
-    <TextView
-        android:id="@+id/dayOneStreamButton"
-        style="@style/AboutSocialButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:drawableLeft="@drawable/ic_youtube"
-        android:drawablePadding="10dp"
-        android:text="@string/about_screen_stream_day_one_title"
-        android:textStyle="bold"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toLeftOf="@+id/dayTwoStreamButton"
-        app:layout_constraintTop_toBottomOf="@+id/streamLabelTitle"/>
-
-    <TextView
-        android:id="@+id/dayTwoStreamButton"
-        style="@style/AboutSocialButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:drawableLeft="@drawable/ic_youtube"
-        android:drawablePadding="10dp"
-        android:text="@string/about_screen_stream_day_two_title"
-        android:textStyle="bold"
-        app:layout_constraintLeft_toRightOf="@+id/dayOneStreamButton"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/dayOneStreamButton"/>
-
-    <TextView
-        android:id="@+id/socialLabelTitle"
-        style="@style/AboutSubTitleText"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="@string/about_screen_social_info_title"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/dayOneStreamButton"/>
-
-    <View
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:background="@color/white"
-        app:layout_constraintBottom_toTopOf="@id/descriptionLabelTitle"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/socialLabelTitle"/>
-
-    <android.support.v7.widget.AppCompatTextView
-        android:id="@+id/webButton"
-        style="@style/AboutSocialButton"
-        android:drawableTop="@drawable/ic_web"
-        android:text="@string/about_screen_web_link_text"
-        app:layout_constraintHorizontal_chainStyle="spread"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toLeftOf="@+id/emailButton"
-        app:layout_constraintTop_toBottomOf="@+id/socialLabelTitle"/>
-
-    <android.support.v7.widget.AppCompatTextView
-        android:id="@+id/emailButton"
-        style="@style/AboutSocialButton"
-        android:drawableTop="@drawable/ic_email"
-        android:text="@string/about_screen_email_link_text"
-        app:layout_constraintLeft_toRightOf="@+id/webButton"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/webButton"/>
-
-    <android.support.v7.widget.AppCompatTextView
-        android:id="@+id/facebookButton"
-        style="@style/AboutSocialButton"
-        android:drawableTop="@drawable/ic_facebook"
-        android:text="@string/about_screen_facebook_link_text"
-        app:layout_constraintHorizontal_chainStyle="spread"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toLeftOf="@+id/instagramButton"
-        app:layout_constraintTop_toBottomOf="@+id/webButton"/>
-
-    <android.support.v7.widget.AppCompatTextView
-        android:id="@+id/instagramButton"
-        style="@style/AboutSocialButton"
-        android:drawableTop="@drawable/ic_instagram"
-        android:text="@string/about_screen_instagram_link_text"
-        app:layout_constraintLeft_toRightOf="@+id/facebookButton"
-        app:layout_constraintRight_toLeftOf="@+id/youtubeButton"
-        app:layout_constraintTop_toBottomOf="@+id/webButton"/>
-
-    <android.support.v7.widget.AppCompatTextView
-        android:id="@+id/youtubeButton"
-        style="@style/AboutSocialButton"
-        android:drawableTop="@drawable/ic_youtube"
-        android:text="@string/about_screen_youtube_link_text"
-        app:layout_constraintLeft_toRightOf="@+id/instagramButton"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/webButton"/>
-
     <TextView
         android:id="@+id/descriptionLabelTitle"
-        style="@style/AboutSubTitleText"
+        style="@style/DetailSubTitleText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="24dp"
         android:text="@string/about_screen_about_info_title"
+        android:textAllCaps="true"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/facebookButton"/>
+        app:layout_constraintTop_toBottomOf="@+id/divider"/>
 
     <TextView
         android:id="@+id/descriptionLabel"
-        style="@style/AboutText"
+        style="@style/Text"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:background="@color/white"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="8dp"
         android:text="@string/about_screen_description_info"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -182,46 +170,149 @@
 
     <TextView
         android:id="@+id/locationLabelTitle"
-        style="@style/AboutSubTitleText"
+        style="@style/DetailSubTitleText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="24dp"
         android:text="@string/about_screen_location_info_title"
+        android:textAllCaps="true"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/descriptionLabel"/>
 
     <TextView
         android:id="@+id/locationLabel"
-        style="@style/AboutText"
+        style="@style/Text"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:background="@color/white"
-        android:drawableRight="@drawable/ic_location_pin"
-        android:foreground="?selectableItemBackground"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="8dp"
         android:text="@string/about_screen_location_info"
         app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/mapsButton"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/locationLabelTitle"/>
+        app:layout_constraintTop_toBottomOf="@+id/locationLabelTitle"/>
+
+    <Button
+        android:id="@+id/mapsButton"
+        style="@style/Button.Normal"
+        android:layout_width="102dp"
+        android:layout_height="40dp"
+        android:layout_marginEnd="16dp"
+        android:text="@string/maps"
+        app:layout_constraintBottom_toBottomOf="@id/locationLabel"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/locationLabelTitle"/>
+
+    <TextView
+        android:id="@+id/socialLabelTitle"
+        style="@style/DetailSubTitleText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="24dp"
+        android:text="@string/about_screen_social_info_title"
+        android:textAllCaps="true"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/locationLabel"/>
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/shareButtonsContainer"
+        style="@style/DefaultCardView"
+        android:layout_width="0dp"
+        android:layout_height="64dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:padding="12dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/socialLabelTitle">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clipToPadding="false"
+            android:weightSum="5">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/emailButton"
+                style="@style/AboutSocialButton"
+                android:src="@drawable/ic_email"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintHorizontal_chainStyle="spread"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toLeftOf="@+id/instagramButton"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/instagramButton"
+                style="@style/AboutSocialButton"
+                android:src="@drawable/ic_instagram"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toRightOf="@+id/emailButton"
+                app:layout_constraintRight_toLeftOf="@+id/facebookButton"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/facebookButton"
+                style="@style/AboutSocialButton"
+                android:src="@drawable/ic_facebook"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toRightOf="@+id/instagramButton"
+                app:layout_constraintRight_toLeftOf="@+id/webButton"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/webButton"
+                style="@style/AboutSocialButton"
+                android:src="@drawable/ic_web"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toRightOf="@+id/facebookButton"
+                app:layout_constraintRight_toLeftOf="@+id/youtubeButton"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/youtubeButton"
+                style="@style/AboutSocialButton"
+                android:src="@drawable/ic_youtube_small"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toRightOf="@+id/webButton"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.card.MaterialCardView>
 
     <ImageView
         android:id="@+id/developerLogo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="40dp"
         android:src="@drawable/logo_undabot"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/locationLabel"/>
+        app:layout_constraintTop_toBottomOf="@+id/shareButtonsContainer"/>
 
     <TextView
         android:id="@+id/developedLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:padding="4dp"
+        android:paddingTop="12dp"
+        android:paddingBottom="80dp"
         android:text="@string/about_screen_developed_by_info"
+        android:textColor="@color/lightBlueGrey"
+        android:textSize="12sp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/developerLogo"/>
+        app:layout_constraintTop_toBottomOf="@+id/developerLogo"/>
 
     <View
         android:id="@+id/developerButton"
@@ -231,6 +322,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/locationLabel"/>
+        app:layout_constraintTop_toBottomOf="@+id/shareButtonsContainer"/>
 
 </merge>

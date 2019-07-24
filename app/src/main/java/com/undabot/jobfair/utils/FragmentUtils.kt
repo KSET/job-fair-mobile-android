@@ -3,8 +3,8 @@ package com.undabot.jobfair.utils
 object FragmentUtils {
 
     /**
-     * Creates tag which is automatically created for [android.support.v4.app.Fragment] in
-     * [android.support.v4.app.FragmentPagerAdapter].
+     * Creates tag which is automatically created for [androidx.fragment.app.Fragment] in
+     * [androidx.fragment.app.FragmentPagerAdapter].
      *
      * @param viewPagerResId - view pager id in XML
      * @param positionInViewPager - position on which fragment is placed in viewPager

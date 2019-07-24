@@ -1,6 +1,6 @@
 package com.undabot.jobfair
 
-import android.support.multidex.MultiDexApplication
+import androidx.multidex.MultiDexApplication
 import com.undabot.jobfair.core.di.ApplicationComponent
 import com.undabot.jobfair.core.di.ApplicationModule
 import com.undabot.jobfair.core.di.DaggerApplicationComponent
@@ -25,9 +25,9 @@ class App : MultiDexApplication() {
 
     private fun initDaggerComponent() {
         applicationComponent = DaggerApplicationComponent.builder()
-                .applicationModule(ApplicationModule(this))
-                .networkingModule(NetworkingModule())
-                .build()
+            .applicationModule(ApplicationModule(this))
+            .networkingModule(NetworkingModule())
+            .build()
         applicationComponent.inject(this)
     }
 }

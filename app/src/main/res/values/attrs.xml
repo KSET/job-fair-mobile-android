@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="HalfCircleLayout">
+        <attr name="innerRadius" format="dimension" />
+        <attr name="outterRadius" format="dimension" />
+        <attr name="backgroundColor" format="color" />
+        <attr name="circleColor" format="color" />
+    </declare-styleable>
+
+    <declare-styleable name="RoundedImageView">
+        <attr name="cornerRadius" format="dimension" />
+    </declare-styleable>
+
+    <declare-styleable name="TopLineTextView">
+        <attr name="lineColor" format="color" />
+        <attr name="lineThickness" format="dimension" />
+    </declare-styleable>
+
+    <declare-styleable name="TimelineDots">
+        <attr name="top" format="boolean" />
+        <attr name="bottom" format="boolean" />
+        <attr name="dotColor" format="color" />
+        <attr name="pastDotColor" format="color" />
+        <attr name="presentInsideDotColor" format="color" />
+        <attr name="presentOutsideDotColor" format="color" />
+        <attr name="futureDotColor" format="color" />
+        <attr name="dotSize" format="dimension" />
+        <attr name="pastDotSize" format="dimension" />
+        <attr name="presentInsideDotSize" format="dimension" />
+        <attr name="presentOutsideDotSize" format="dimension" />
+        <attr name="futureDotSize" format="dimension" />
+        <attr name="numberOfDots" format="integer" />
+    </declare-styleable>
+</resources>

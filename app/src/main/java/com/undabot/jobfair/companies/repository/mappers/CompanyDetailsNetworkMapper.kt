@@ -1,6 +1,6 @@
 package com.undabot.jobfair.companies.repository.mappers
 
-import CompanyDetailsQuery
+import com.undabot.jobfair.CompanyDetailsQuery
 import com.undabot.jobfair.booths.repository.mappers.BoothLocationMapper
 import com.undabot.jobfair.companies.entities.DetailedCompany
 import com.undabot.jobfair.companies.entities.DetailedCompany.Companion.DEFAULT_DATE_TIME

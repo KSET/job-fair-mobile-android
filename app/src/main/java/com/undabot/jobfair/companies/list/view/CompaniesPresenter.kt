@@ -10,18 +10,9 @@ import javax.inject.Inject
 class CompaniesPresenter
 @Inject
 constructor(
-        private val companyViewModelMapper: CompanyViewModelMapper,
-        private val industryItemMapper: IndustryItemMapper
+    private val companyViewModelMapper: CompanyViewModelMapper,
+    private val industryItemMapper: IndustryItemMapper
 ) : AbsPresenter<CompaniesContract.View>(), CompaniesContract.Presenter {
-
-    override fun displayFilterState(isEnabled: Boolean) {
-        onView {
-            it.displayFilterState(when (isEnabled) {
-                true -> FilterState.Enabled
-                false -> FilterState.Disabled
-            })
-        }
-    }
 
     override fun displayEmpty() {
         onView {

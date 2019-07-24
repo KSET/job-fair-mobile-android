@@ -28,7 +28,5 @@ class AboutCoordinator
 
     override fun onDayTwoStreamPressed() = presenter.openUrl(Links.DAY_TWO_STREAM)
 
-    override fun onSharePressed() = presenter.shareUrl(Links.WEB)
-
     override fun onDeveloperInfoPressed() = presenter.openUrl(Links.DEVELOPER_WEB)
 }

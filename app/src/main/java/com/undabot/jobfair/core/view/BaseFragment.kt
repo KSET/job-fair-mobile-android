@@ -1,8 +1,8 @@
 package com.undabot.jobfair.core.view
 
 import android.os.Bundle
-import android.support.v4.app.Fragment
 import android.view.MenuItem
+import androidx.fragment.app.Fragment
 import com.undabot.jobfair.App
 import com.undabot.jobfair.core.di.ApplicationComponent
 
