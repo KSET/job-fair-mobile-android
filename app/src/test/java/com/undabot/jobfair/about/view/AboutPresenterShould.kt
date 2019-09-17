@@ -1,6 +1,6 @@
 package com.undabot.jobfair.about.view
 
-import com.nhaarman.mockito_kotlin.verify
+import com.nhaarman.mockitokotlin2.verify
 import com.undabot.jobfair.Then
 import com.undabot.jobfair.When
 import org.junit.Before

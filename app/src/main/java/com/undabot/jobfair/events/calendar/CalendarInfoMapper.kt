@@ -9,7 +9,7 @@ class CalendarInfoMapper @Inject constructor() {
             title = titleFrom(event),
             startTime = event.startTime,
             endTime = event.endTime,
-            locationName = event.location
+            locationName = event.location.location
     )
 
     private fun titleFrom(event: Event) = "${event.company.name} - ${event.title}"

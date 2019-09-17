@@ -1,0 +1,258 @@
+query CompaniesQuery {
+  companies {
+    id
+    name
+    logo {
+      small {
+        url
+      }
+    }
+  }
+}
+
+query Industries {
+  industries{
+    id
+    name
+    companies{
+      id
+    }
+  }
+}
+
+query PresentationsQuery {
+      presentations {
+            id
+            title
+            occures_at
+            finishes_at
+            description
+            place{
+              id
+              name
+              geolocation{
+                latitude
+                longitude
+              }
+            }
+            presenter_bio
+            presenter_photo{
+                thumb{
+                    url
+                }
+            }
+            company {
+              id
+              name
+              logo{
+                large{
+                  url
+                }
+              }
+            }
+          }
+}
+
+query WorkshopsQuery{
+    workshops {
+            id
+        	name
+            occures_at
+            finishes_at
+            description
+            place{
+              id
+              name
+              geolocation{
+                latitude
+                longitude
+              }
+            }
+            company {
+              id
+              name
+              logo{
+                large{
+                  url
+                }
+              }
+            }
+          }
+}
+
+query CompanyDetails($id : ID) {
+  company(id: $id) {
+    id
+    name
+    homepage_url
+    logo {
+      medium {
+        url
+      }
+    }
+    industry {
+      name
+    }
+    workshop {
+      name
+      occures_at
+    }
+    presentation {
+      title
+      occures_at
+    }
+    short_description
+    cocktail {
+      name
+    }
+    booth {
+      location
+      geolocation
+    }
+  }
+}
+
+
+query BoothsQuery{
+  booths {
+    id
+    location
+    geolocation
+    notes
+    size
+    company {
+      id
+      name
+      logo {
+        thumb {
+          url
+        }
+      }
+    }
+  }
+}
+
+query CurrentUser {
+  current_user {
+    id
+    first_name
+    last_name
+    email
+    role
+    resume {
+      address
+      birthday
+      city
+      created_at
+      email
+      first_name
+      github_url
+      house_number
+      id
+      last_name
+      linkedin_url
+      phone
+      study_module
+      uid
+      updated_at
+      year_of_study
+      zip
+    }
+    companies {
+      id,
+      name,
+      logo {
+        thumb {
+          url
+        }
+      }
+    }
+  }
+}
+
+mutation CompanyResumeReview(
+  $clientMutationId : String,
+  $company_member_id : ID,
+  $resume_uid : ID,
+  $notes : String,
+  $social : Int,
+  $ambition : Int,
+  $skill : Int
+){
+  company_resume_review(input: {
+    clientMutationId: $clientMutationId,
+    company_member_id: $company_member_id,
+    resume_uid: $resume_uid,
+    notes: $notes,
+    social: $social,
+    ambition: $ambition,
+    skill: $skill
+  }) {
+    data {
+      id
+    }
+  }
+}
+
+mutation EventReview(
+    $presentationId: ID,
+    $workshopId: ID,
+    $value: Int
+){
+    event_review(
+        input:{
+            presentation_id: $presentationId,
+            workshop_id: $workshopId,
+            value: $value
+        }
+    ){
+        data {
+            id
+            value
+        }
+    }
+}
+
+mutation Login($email : String, $password : String){
+  login(input: {clientMutationId: "login", email: $email, password: $password}) {
+    user {
+      id
+      first_name
+      last_name
+      email
+      role
+      resume {
+        id
+        uid
+      }
+      companies {
+        id,
+        name,
+        logo {
+          thumb {
+            url
+          }
+        }
+      }
+    }
+    token
+  }
+}
+
+mutation ResetPassword($email : String){
+  reset_password(input: {clientMutationId: "reset_password", email: $email}) {
+    success
+  }
+}
+
+mutation OnSiteRequest($companyId : ID, $items : [OnsiteRequestItemInput]!){
+  onsite_request(input:{company_id: $companyId, items: $items}) {
+    data {
+      id
+      items {
+        id
+        amount
+      }
+    }
+  }
+}

@@ -7,4 +7,6 @@ interface BaseCoordinator<in V> {
     fun unbind(view: V)
 
     fun onBind()
+
+    fun onUnbind()
 }

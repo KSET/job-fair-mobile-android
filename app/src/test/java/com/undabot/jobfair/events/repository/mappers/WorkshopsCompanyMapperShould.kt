@@ -1,11 +1,11 @@
 package com.undabot.jobfair.events.repository.mappers
 
-import WorkshopsQuery
-import com.nhaarman.mockito_kotlin.isNull
-import com.nhaarman.mockito_kotlin.whenever
+import com.nhaarman.mockitokotlin2.isNull
+import com.nhaarman.mockitokotlin2.whenever
 import com.undabot.jobfair.Given
 import com.undabot.jobfair.Then
 import com.undabot.jobfair.When
+import com.undabot.jobfair.WorkshopsQuery
 import com.undabot.jobfair.companies.entities.Company
 import com.undabot.jobfair.core.entities.Image
 import com.undabot.jobfair.equals
@@ -89,6 +89,6 @@ class WorkshopsCompanyMapperShould {
         name: String? = "",
         logo: WorkshopsQuery.Logo? = null
     ) = WorkshopsQuery.Company(
-            "", id, name, logo
+        "", id, name, logo
     )
 }

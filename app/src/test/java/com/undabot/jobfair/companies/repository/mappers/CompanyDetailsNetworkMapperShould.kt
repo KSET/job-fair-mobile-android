@@ -1,8 +1,8 @@
 package com.undabot.jobfair.companies.repository.mappers
 
-import CompanyDetailsQuery
-import com.nhaarman.mockito_kotlin.isNull
-import com.nhaarman.mockito_kotlin.whenever
+import com.nhaarman.mockitokotlin2.isNull
+import com.nhaarman.mockitokotlin2.whenever
+import com.undabot.jobfair.CompanyDetailsQuery
 import com.undabot.jobfair.Given
 import com.undabot.jobfair.Then
 import com.undabot.jobfair.When
@@ -54,7 +54,7 @@ class CompanyDetailsNetworkMapperShould {
     fun `map network logo to model`() {
         Given {
             companyWith(logo = CompanyDetailsQuery.Logo("",
-                    CompanyDetailsQuery.Medium("", "url")))
+                CompanyDetailsQuery.Medium("", "url")))
         }
         When { `map is requested`() }
         Then { result.logoUrl equals "url" }
@@ -130,18 +130,18 @@ class CompanyDetailsNetworkMapperShould {
     }
 
     private fun companyWith(
-            id: String? = null,
-            name: String? = null,
-            url: String? = null,
-            logo: CompanyDetailsQuery.Logo? = null,
-            industry: CompanyDetailsQuery.Industry? = null,
-            workshop: CompanyDetailsQuery.Workshop? = null,
-            presentation: CompanyDetailsQuery.Presentation? = null,
-            desc: String? = null,
-            cocktail: CompanyDetailsQuery.Cocktail? = null,
-            booth: CompanyDetailsQuery.Booth? = null
+        id: String? = null,
+        name: String? = null,
+        url: String? = null,
+        logo: CompanyDetailsQuery.Logo? = null,
+        industry: CompanyDetailsQuery.Industry? = null,
+        workshop: CompanyDetailsQuery.Workshop? = null,
+        presentation: CompanyDetailsQuery.Presentation? = null,
+        desc: String? = null,
+        cocktail: CompanyDetailsQuery.Cocktail? = null,
+        booth: CompanyDetailsQuery.Booth? = null
     ) {
         queryResult = CompanyDetailsQuery.Company("", id, name, url, logo, industry,
-                workshop, presentation, desc, cocktail, booth)
+            workshop, presentation, desc, cocktail, booth)
     }
 }

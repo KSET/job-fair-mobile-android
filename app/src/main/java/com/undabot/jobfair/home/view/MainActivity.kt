@@ -1,99 +1,234 @@
 package com.undabot.jobfair.home.view
 
+import android.content.Context
+import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
-import android.support.v4.content.ContextCompat
-import com.aurelhubert.ahbottomnavigation.AHBottomNavigationItem
+import android.view.View
+import android.view.ViewGroup
+import android.view.animation.OvershootInterpolator
+import android.widget.ImageView
+import android.widget.TextView
+import androidx.annotation.DrawableRes
+import androidx.annotation.StringRes
+import androidx.core.content.ContextCompat
+import androidx.core.view.ViewCompat
+import androidx.core.view.ViewPropertyAnimatorCompat
+import com.aurelhubert.ahbottomnavigation.AHBottomNavigation
 import com.undabot.jobfair.R
-import com.undabot.jobfair.about.view.AboutScreen
-import com.undabot.jobfair.booths.view.BoothsScreen
-import com.undabot.jobfair.companies.list.view.CompaniesScreen
+import com.undabot.jobfair.account.view.AccountActivity
+import com.undabot.jobfair.booths.view.BoothsActivity
 import com.undabot.jobfair.core.di.ApplicationComponent
 import com.undabot.jobfair.core.view.BaseActivity
-import com.undabot.jobfair.events.entities.Event
-import com.undabot.jobfair.events.list.view.EventsScreen
+import com.undabot.jobfair.core.view.BaseFragment
 import com.undabot.jobfair.home.adapters.HomePagerAdapter
-import com.undabot.jobfair.news.list.view.NewsScreen
+import com.undabot.jobfair.home.di.HomeModule
+import com.undabot.jobfair.login.models.User
+import com.undabot.jobfair.login.models.UserType
+import com.undabot.jobfair.login.view.LoginActivity
+import com.undabot.jobfair.scanqr.view.ScanQrActivity
+import com.undabot.jobfair.support.assistance.view.AssistanceActivity
+import com.undabot.jobfair.support.drinks.view.DrinksActivity
+import com.undabot.jobfair.support.submitcv.view.SubmitCvActivity
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.toolbar_main.*
+import javax.inject.Inject
 
-class MainActivity : BaseActivity() {
+class MainActivity : BaseActivity(), HomeContract.View {
 
-    private object Screens {
-        const val NEWS = 0
-        const val PRESENTATIONS = 1
-        const val WORKSHOPS = 2
-        const val COMPANIES = 3
-        const val MAP = 4
+    companion object {
+        private const val FAB_ANIMATION_DURATION = 300L
+        private val FAB_ANIMATION_INTERPOLATOR = OvershootInterpolator()
+
+        fun startWith(context: Context) {
+            val intent = Intent(context, MainActivity::class.java).apply {
+                flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+            }
+            context.startActivity(intent)
+        }
     }
 
-    private val fragments = listOf(
-            NewsScreen(),
-            EventsScreen.newInstance(Event.Type.PRESENTATION),
-            EventsScreen.newInstance(Event.Type.WORKSHOP),
-            CompaniesScreen(),
-            BoothsScreen())
+    @Inject lateinit var coordinator: HomeContract.Coordinator
+
+    private val fragmentByPosition = LinkedHashMap<Int, BaseFragment>(5).apply {
+        put(0, AgendaTab.fragmentFactory()!!)
+        put(1, NewsTab.fragmentFactory()!!)
+        put(2, CompaniesTab.fragmentFactory()!!)
+        put(3, AboutTab.fragmentFactory()!!)
+    }
+    private val fragments: List<BaseFragment> = ArrayList(fragmentByPosition.values)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        toolbar.inflateMenu(R.menu.info_and_filter)
+        toolbar.inflateMenu(R.menu.account)
         toolbar.setOnMenuItemClickListener {
-            if (it.itemId == R.id.action_info) {
-                AboutScreen.startWith(this)
+            if (it.itemId == R.id.action_account) {
+                coordinator.accountPressed()
             }
-            fragments[viewpager.currentItem].onMenuItemClick(it)
+            fragmentByPosition[viewpager.currentItem]!!.onMenuItemClick(it)
         }
 
-        setToolbarTitleFor(Screens.NEWS)
-        setToolbarMenuFor(Screens.NEWS)
+        coordinator.bind(this)
+        coordinator.requestLoggedInUser()
+        boothsButton.setOnClickListener { BoothsActivity.startWith(this) }
+        setupViewPager()
+        setupBottomNavigation()
+        overlay.setOnClickListener {
+            animateFab()
+            animateOverlay()
+        }
+        setToolbarTitleFor(AgendaTab)
+    }
 
-        viewpager.adapter = HomePagerAdapter(
-                fragments, supportFragmentManager)
+    override fun showOptionsForUser(user: User?) {
+        when (user?.type) {
+            UserType.COMPANY -> {
+                createFABItem(R.string.bottom_navigation_item_assistance, R.drawable.ic_assistance, this::assistanceClicked)
+                createFABItem(R.string.bottom_navigation_item_drinks, R.drawable.ic_drinks, this::drinksClicked)
+                createFABItem(R.string.bottom_navigation_item_scan_qr, R.drawable.ic_scan_qr, this::scanQrCodeClicked)
+            }
+            UserType.STUDENT -> {
+                createFABItem(R.string.bottom_navigation_item_submit_or_edit_cv, R.drawable.ic_submit_cv, this::submitOrEditCVClicked)
+            }
+            UserType.ANONYMOUS, null -> {
+                createFABItem(R.string.bottom_navigation_item_submit_cv, R.drawable.ic_submit_cv, this::submitCVClicked)
+            }
+        }
+
+        fab.setOnClickListener {
+            animateFab()
+            animateOverlay()
+        }
+    }
+
+    override fun openLoginScreen() {
+        LoginActivity.startWith(this)
+    }
+
+    override fun openAccountScreen() {
+        AccountActivity.startWith(this)
+    }
+
+    private fun setupViewPager() {
+        viewpager.adapter = HomePagerAdapter(fragments, supportFragmentManager)
         viewpager.offscreenPageLimit = 4
+    }
 
-        bottomNavigation.addItems(
-                listOf(AHBottomNavigationItem(getString(R.string.news), R.drawable.ic_news_background),
-                        AHBottomNavigationItem(getString(R.string.presentations), R.drawable.ic_presentations_background),
-                        AHBottomNavigationItem(getString(R.string.workshops), R.drawable.ic_workshops_background),
-                        AHBottomNavigationItem(getString(R.string.companies), R.drawable.ic_companies_background),
-                        AHBottomNavigationItem(getString(R.string.booths), R.drawable.ic_booths_background))
-        )
+    private fun setupBottomNavigation() = with(bottomNavigation) {
+        titleState = AHBottomNavigation.TitleState.ALWAYS_SHOW
+        defaultBackgroundColor = Color.WHITE
+        accentColor = ContextCompat.getColor(this@MainActivity, R.color.bottomNavigationActiveColor)
+        inactiveColor = ContextCompat.getColor(this@MainActivity, R.color.bottomNavigationInactiveColor)
+        isForceTint = true
+        setUseElevation(false)
 
-        bottomNavigation.setOnTabSelectedListener { position, wasSelected ->
+        addItems(Tab.getTabsWithEmpty().map { it.toNavigationItem(this@MainActivity) })
+        disableItemAtPosition(2)
+        setOnTabSelectedListener { position, wasSelected ->
             if (!wasSelected) {
-                viewpager.currentItem = position
                 setToolbarTitleFor(position)
-                setToolbarMenuFor(position)
+
+                var newPosition = position
+                if (newPosition > 2) {
+                    newPosition--
+                }
+                viewpager.currentItem = newPosition
             }
             true
         }
-
-        bottomNavigation.defaultBackgroundColor = Color.WHITE
-        bottomNavigation.accentColor = ContextCompat.getColor(this, R.color.colorPrimary)
-        bottomNavigation.inactiveColor = ContextCompat.getColor(this, R.color.colorAccent)
-        bottomNavigation.isForceTint = false
     }
 
-    private fun setToolbarMenuFor(position: Int) {
-        when (position) {
-            Screens.COMPANIES -> toolbar.menu.findItem(R.id.action_filter).isVisible = true
-            else -> toolbar.menu.findItem(R.id.action_filter).isVisible = false
+    private fun createFABItem(@StringRes label: Int, @DrawableRes icon: Int, listener: () -> Unit): View {
+        val view: ViewGroup = layoutInflater.inflate(R.layout.fab_item, overlay, false) as ViewGroup
+
+        view.findViewById<TextView>(R.id.itemLabel).apply {
+            text = resources.getString(label)
         }
+        view.findViewById<ImageView>(R.id.itemButton).apply {
+            setOnClickListener { listener() }
+            setImageDrawable(ContextCompat.getDrawable(this@MainActivity, icon))
+        }
+
+        overlay.addView(view)
+
+        return view
+    }
+
+    private fun assistanceClicked() {
+        AssistanceActivity.startWith(this)
+    }
+
+    private fun drinksClicked() {
+        DrinksActivity.startWith(this)
+    }
+
+    private fun scanQrCodeClicked() {
+        ScanQrActivity.startWith(this)
+    }
+
+    private fun submitOrEditCVClicked() {
+        SubmitCvActivity.startWith(this)
+    }
+
+    private fun submitCVClicked() {
+        SubmitCvActivity.startWith(this)
+    }
+
+    private fun animateFab() {
+        animate(
+            view = fab,
+            overlayVisibleListener = { rotation(0f) },
+            overlayGoneListener = { rotation(45f) }
+        )
+    }
+
+    private fun animateOverlay() {
+        animate(
+            view = overlay,
+            overlayVisibleListener = {
+                alpha(0f)
+                withEndAction { overlay.visibility = View.GONE }
+            },
+            overlayGoneListener = {
+                alpha(1f)
+                overlay.visibility = View.VISIBLE
+            }
+        )
+    }
+
+    private inline fun animate(
+        view: View,
+        overlayVisibleListener: ViewPropertyAnimatorCompat.() -> Unit,
+        overlayGoneListener: ViewPropertyAnimatorCompat.() -> Unit
+    ) {
+        view.animate().cancel()
+        val animation = ViewCompat.animate(view)
+
+        if (overlay.visibility == View.VISIBLE) {
+            animation.overlayVisibleListener()
+        } else {
+            animation.overlayGoneListener()
+        }
+
+        animation
+            .setDuration(FAB_ANIMATION_DURATION)
+            .setInterpolator(FAB_ANIMATION_INTERPOLATOR)
+            .start()
     }
 
     private fun setToolbarTitleFor(position: Int) {
-        val titleText: String = when (position) {
-            Screens.NEWS -> getString(R.string.news)
-            Screens.PRESENTATIONS -> getString(R.string.presentations)
-            Screens.WORKSHOPS -> getString(R.string.workshops)
-            Screens.COMPANIES -> getString(R.string.companies)
-            else -> getString(R.string.booths)
+        val tab = Tab.forPosition(position)
+        if (tab != null) {
+            setToolbarTitleFor(tab)
         }
-        toolbar.title = titleText
+    }
+
+    private fun setToolbarTitleFor(tab: Tab) {
+        toolbarTitle.text = getString(tab.title)
     }
 
     override fun injectToAppComponent(applicationComponent: ApplicationComponent) {
-        // Nothing to inject
+        applicationComponent.plus(HomeModule()).inject(this)
     }
 }

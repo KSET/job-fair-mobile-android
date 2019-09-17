@@ -4,7 +4,7 @@
        android:layout_width="match_parent"
        android:layout_height="match_parent">
 
-    <android.support.v4.view.ViewPager
+    <androidx.viewpager.widget.ViewPager
         android:id="@+id/pager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -14,10 +14,9 @@
     <LinearLayout
         android:id="@+id/viewPagerNavigationContainer"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="52dp"
         android:layout_gravity="bottom"
         android:background="@color/white"
-        android:elevation="@dimen/navigation_bar_elevation"
         android:weightSum="2"
         app:layout_anchor="@id/detailPager"
         app:layout_anchorGravity="bottom"
@@ -25,25 +24,40 @@
 
         <TextView
             android:id="@+id/previous"
+            style="@style/PagerButtonText"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:background="?selectableItemBackgroundBorderless"
-            android:gravity="left"
+            android:gravity="center"
             android:padding="16dp"
-            android:text="@string/previous"
-            android:textAppearance="@style/PagerButtonText"/>
+            android:text="@string/previous"/>
+
+        <View
+            android:layout_width="1px"
+            android:layout_height="match_parent"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:background="@color/defaultStrokeColor"/>
 
         <TextView
             android:id="@+id/next"
+            style="@style/PagerButtonText"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:background="?selectableItemBackgroundBorderless"
-            android:gravity="right"
+            android:gravity="center"
             android:padding="@dimen/navigation_bar_padding"
-            android:text="@string/next"
-            android:textAppearance="@style/PagerButtonText"/>
+            android:text="@string/next"/>
 
     </LinearLayout>
+
+    <View
+        android:id="@+id/tabDivider"
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:layout_gravity="bottom"
+        android:layout_marginBottom="52dp"
+        android:background="@color/defaultStrokeColor"/>
 </merge>

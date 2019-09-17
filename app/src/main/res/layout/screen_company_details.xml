@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:clipToPadding="false"
-            android:overScrollMode="never"
-            android:paddingBottom="@dimen/company_details_bottom_padding">
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clipToPadding="false"
+    android:overScrollMode="never"
+    android:paddingBottom="@dimen/company_details_bottom_padding">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -14,67 +15,97 @@
         <include layout="@layout/company_details_header"/>
 
         <TextView
-            style="@style/CompanyDetailSubtitleText"
+            style="@style/DetailSubTitleText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="7dp"
             android:text="@string/about"/>
 
         <TextView
             android:id="@+id/aboutCompany"
-            style="@style/CompanyDetailText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-
-        <TextView
-            style="@style/CompanyDetailSubtitleText"
+            style="@style/Text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"/>
+
+        <TextView
+            style="@style/DetailSubTitleText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="18dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="7dp"
             android:text="@string/industry"/>
 
         <TextView
             android:id="@+id/categories"
-            style="@style/CompanyDetailText"
+            style="@style/Text"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"/>
 
         <TextView
             android:id="@+id/presentationTitle"
-            style="@style/CompanyDetailSubtitleText"
+            style="@style/DetailSubTitleText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="18dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="7dp"
             android:text="@string/presentation_time"/>
 
         <TextView
             android:id="@+id/presentationTime"
-            style="@style/CompanyDetailText"
+            style="@style/Text"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"/>
 
         <TextView
             android:id="@+id/workshopTitle"
-            style="@style/CompanyDetailSubtitleText"
+            style="@style/DetailSubTitleText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="18dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="7dp"
             android:text="@string/workshop_time"/>
 
         <TextView
             android:id="@+id/workshopTime"
-            style="@style/CompanyDetailText"
+            style="@style/Text"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"/>
 
         <TextView
             android:id="@+id/cocktailTitle"
-            style="@style/CompanyDetailSubtitleText"
+            style="@style/DetailSubTitleText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="18dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="7dp"
             android:text="@string/cocktail"/>
 
         <TextView
             android:id="@+id/cocktail"
-            style="@style/CompanyDetailText"
+            style="@style/Text"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"/>
 
     </LinearLayout>
 

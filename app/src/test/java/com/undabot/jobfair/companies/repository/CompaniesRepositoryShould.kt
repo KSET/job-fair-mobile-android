@@ -1,11 +1,11 @@
 package com.undabot.jobfair.companies.repository
 
-import CompaniesQuery
-import CompanyDetailsQuery
-import IndustriesQuery
-import com.nhaarman.mockito_kotlin.whenever
+import com.nhaarman.mockitokotlin2.whenever
 import com.undabot.jobfair.And
+import com.undabot.jobfair.CompaniesQuery
+import com.undabot.jobfair.CompanyDetailsQuery
 import com.undabot.jobfair.Given
+import com.undabot.jobfair.IndustriesQuery
 import com.undabot.jobfair.TestSchedulerProvider
 import com.undabot.jobfair.Then
 import com.undabot.jobfair.When

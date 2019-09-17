@@ -1,6 +1,6 @@
 package com.undabot.jobfair.events.details.view
 
-import com.nhaarman.mockito_kotlin.verify
+import com.nhaarman.mockitokotlin2.verify
 import com.undabot.jobfair.Then
 import com.undabot.jobfair.When
 import com.undabot.jobfair.companies.view.models.CompanyViewModel
@@ -15,9 +15,9 @@ import org.mockito.junit.MockitoJUnitRunner
 @RunWith(MockitoJUnitRunner::class)
 class EventDetailsPresenterShould {
 
-    private lateinit var presenter: EventDetailsContract.Presenter
+    private lateinit var presenter: EventDetailsContainerContract.Presenter
 
-    @Mock private lateinit var view: EventDetailsContract.View
+    @Mock private lateinit var view: EventDetailsContainerContract.View
     @Mock private lateinit var calendarInfo: CalendarInfo
     private val index = 1
     @Mock private lateinit var events: List<EventViewModel>
@@ -25,7 +25,7 @@ class EventDetailsPresenterShould {
 
     @Before
     fun prepare() {
-        presenter = EventDetailsPresenter()
+        presenter = EventDetailsContainerPresenter()
         presenter.bind(view)
     }
 

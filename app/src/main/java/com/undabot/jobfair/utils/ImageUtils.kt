@@ -2,8 +2,8 @@ package com.undabot.jobfair.utils
 
 import android.content.Context
 import android.graphics.Bitmap
-import android.support.annotation.DrawableRes
 import android.widget.ImageView
+import androidx.annotation.DrawableRes
 import com.bumptech.glide.GlideBuilder
 import com.bumptech.glide.annotation.GlideModule
 import com.bumptech.glide.load.Transformation
@@ -20,30 +20,41 @@ class ImageUtils {
 
     companion object {
         internal const val CACHE_SIZE: Long = 1024 * 1024 * 20 // 20MB
+
         fun load(
-                context: Context,
-                imageUrl: String,
-                imageView: ImageView,
-                @DrawableRes placeholder: Int = R.drawable.ic_placeholder,
-                transformOption: Transform = Transform.FIT_CENTER
+            context: Context,
+            imageUrl: String,
+            imageView: ImageView,
+            @DrawableRes placeholder: Int = R.drawable.ic_placeholder,
+            includeRadius: Boolean = true,
+            transformOption: Transform = Transform.FIT_CENTER,
+            roundImage: Boolean = false
         ) {
-            val requestOptions = RequestOptions()
-                    .placeholder(placeholder)
-                    .error(placeholder)
-                    .transforms(transformationFrom(transformOption),
-                            RoundedCorners(context.resources.getDimensionPixelSize(R.dimen.image_radius)))
+            val corners = if (includeRadius) {
+                RoundedCorners(context.resources.getDimensionPixelSize(R.dimen.image_radius))
+            } else {
+                RoundedCorners(1)
+            }
+            var requestOptions = RequestOptions()
+                .placeholder(placeholder)
+                .error(placeholder)
+                .transform(transformationFrom(transformOption), corners)
+
+            if (roundImage) {
+                requestOptions = requestOptions.apply { circleCrop() }
+            }
 
             GlideApp.with(context)
-                    .load(imageUrl)
-                    .apply(requestOptions)
-                    .into(imageView)
+                .load(imageUrl)
+                .apply(requestOptions)
+                .into(imageView)
         }
 
         private fun transformationFrom(transformOption: Transform): Transformation<Bitmap>? =
-                when (transformOption) {
-                    Transform.CENTER_CROP -> CenterCrop()
-                    else -> FitCenter()
-                }
+            when (transformOption) {
+                Transform.CENTER_CROP -> CenterCrop()
+                else -> FitCenter()
+            }
     }
 
     enum class Transform {

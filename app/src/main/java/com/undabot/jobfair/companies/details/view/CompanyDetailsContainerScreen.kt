@@ -3,14 +3,15 @@ package com.undabot.jobfair.companies.details.view
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.support.v4.app.Fragment
-import android.support.v4.app.FragmentPagerAdapter
-import android.support.v7.widget.Toolbar
+import androidx.appcompat.widget.Toolbar
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentPagerAdapter
 import com.undabot.jobfair.R
 import com.undabot.jobfair.companies.view.models.CompanyViewModel
 import com.undabot.jobfair.core.di.ApplicationComponent
 import com.undabot.jobfair.core.view.BaseActivity
 import kotlinx.android.synthetic.main.screen_company_details_container.*
+import kotlinx.android.synthetic.main.toolbar_details.*
 
 class CompanyDetailsContainerScreen : BaseActivity() {
 
@@ -38,7 +39,7 @@ class CompanyDetailsContainerScreen : BaseActivity() {
 
     private fun setupToolbar() {
         toolbar = findViewById(R.id.toolbar)
-        toolbar.title = getString(R.string.companies)
+        toolbarTitle.text = getString(R.string.companies)
         toolbar.setNavigationOnClickListener { super.onBackPressed() }
     }
 

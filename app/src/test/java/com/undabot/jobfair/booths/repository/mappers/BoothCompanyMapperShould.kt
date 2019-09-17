@@ -1,8 +1,8 @@
 package com.undabot.jobfair.booths.repository.mappers
 
-import BoothsQuery
-import com.nhaarman.mockito_kotlin.isNull
-import com.nhaarman.mockito_kotlin.whenever
+import com.nhaarman.mockitokotlin2.isNull
+import com.nhaarman.mockitokotlin2.whenever
+import com.undabot.jobfair.BoothsQuery
 import com.undabot.jobfair.Given
 import com.undabot.jobfair.Then
 import com.undabot.jobfair.When

@@ -1,12 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#191938</color>
-    <color name="textColor">#191938</color>
-    <color name="subtextColor">#cc191938</color>
+    <color name="colorPrimary">@color/darkBlue</color>
+    <color name="colorPrimaryDark">@color/darkBlue</color>
+    <color name="colorAccent">@color/darkBlue</color>
 
-    <color name="colorPrimaryDark">#191938</color>
-    <color name="colorAccent">#191938</color>
-    <color name="white">#ffffff</color>
+    <color name="textColor">@color/darkGrey</color>
+    <color name="subtextColor">@color/lightBlueGrey</color>
+    <color name="toolbarContentColor">@color/darkGrey</color>
+    <color name="colorBottomNavigationIcon">@color/textColor</color>
     <color name="splash_background">@color/colorPrimary</color>
-    <color name="in_progress_label_background">@android:color/holo_green_light</color>
+    <color name="defaultStrokeColor">#E0E0E0</color>
+    <color name="inProgressStrokeColor">@color/colorPrimary</color>
+    <color name="bottomNavigationActiveColor">#191938</color>
+    <color name="bottomNavigationInactiveColor">@color/lightBlueGrey</color>
+
+    <color name="white">#ffffff</color>
+    <color name="red">#CB2127</color>
+    <color name="yellow">#FFD381</color>
+    <color name="darkBlue">#141637</color>
+
+    <color name="darkGrey">#333333</color>
+    <color name="lightBlueGrey">#8B8B97</color>
+    <color name="grey4">#BDBDBD</color>
+    <color name="grey5">#E0E0E0</color>
+    <color name="grey6">#F2F2F2</color>
+
 </resources>

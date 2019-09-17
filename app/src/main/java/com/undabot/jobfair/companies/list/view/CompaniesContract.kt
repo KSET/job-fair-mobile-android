@@ -23,7 +23,6 @@ interface CompaniesContract {
         fun displayReady()
         fun prepareIndustries(items: List<IndustryViewModel>)
         fun displayEmpty()
-        fun displayFilterState(filterState: FilterState)
     }
 
     interface Presenter : BasePresenter<View>, ShowCompanies.DisplaysCompanies,

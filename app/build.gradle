@@ -1,19 +1,19 @@
-apply plugin: 'com.android.application'
-apply plugin: 'com.apollographql.android'
-apply plugin: 'kotlin-kapt'
-apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
-apply from: rootProject.file('secrets/secrets.gradle')
+apply plugin: "com.android.application"
+apply plugin: "com.apollographql.android"
+apply plugin: "kotlin-kapt"
+apply plugin: "kotlin-android"
+apply plugin: "kotlin-android-extensions"
+apply from: rootProject.file("secrets/secrets.gradle")
 
 android {
-    compileSdkVersion 26
+    compileSdkVersion versions.compileSdk
     defaultConfig {
         applicationId "hr.apps.n675"
-        minSdkVersion 21
-        targetSdkVersion 26
-        versionCode 6
-        versionName "6.0.0"
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        minSdkVersion versions.minSdk
+        targetSdkVersion versions.targetSdk
+        versionCode 24
+        versionName "7.1.2"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         multiDexEnabled true
     }
 
@@ -36,22 +36,27 @@ android {
         release {
             signingConfig signingConfigs.release
             minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
         }
         debug {
             signingConfig signingConfigs.debug
-            applicationIdSuffix(project.hasProperty('debug_suffix') ? debug_suffix : '.debug')
-            versionNameSuffix(project.hasProperty('debug_suffix') ? ('-' + debug_suffix + '-debug') : '-debug')
+            applicationIdSuffix(project.hasProperty("debug_suffix") ? debug_suffix : ".debug")
+            versionNameSuffix(project.hasProperty("debug_suffix") ? ("-" + debug_suffix + "-debug") : "-debug")
         }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
     }
 }
 
 apollo {
-    customTypeMapping['DateTime'] = "org.joda.time.DateTime"
+    customTypeMapping = ["DateTime" : "org.joda.time.DateTime"]
 }
 
 configurations {
-    all*.exclude group: 'xpp3', module: 'xpp3'
+    all*.exclude group: "xpp3", module: "xpp3"
 }
 
 androidExtensions {
@@ -59,8 +64,7 @@ androidExtensions {
 }
 
 dependencies {
-    implementation fileTree(include: ['*.jar'], dir: 'libs')
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
+    implementation libraries.kotlin
     kapt libraries.daggerCompiler
     implementation libraries.dagger
     implementation libraries.glide
@@ -81,13 +85,15 @@ dependencies {
     implementation libraries.retrofit
     implementation libraries.retrofitConverterGson
     implementation(libraries.retrofitConverterXML) {
-        exclude module: 'stax-api'
+        exclude module: "stax-api"
     }
+    implementation libraries.okhttpLoggingInterceptor
     implementation libraries.rxJava2
     implementation libraries.rxKotlin
     implementation libraries.rxAndroid
     implementation libraries.retrofitAdapterRxJava2
     implementation libraries.firebase
+    implementation libraries.zxing
 
     debugImplementation libraries.hyperion
     debugImplementation libraries.hyperionAttr
@@ -95,20 +101,15 @@ dependencies {
     debugImplementation libraries.hyperionRecord
     debugImplementation libraries.hyperionCrash
 
-    testImplementation(libraries.mockitoKotlin) {
-        exclude group: 'org.jetbrains.kotlin'
-    }
+    testImplementation libraries.mockitoKotlin
     testImplementation libraries.mockito
     testImplementation libraries.assertjAndroid
-    testImplementation(libraries.kluent) {
-        exclude group: 'org.jetbrains.kotlin'
-    }
-    testImplementation 'org.mockito:mockito-inline:2.8.9'
-    testImplementation 'joda-time:joda-time:2.9.9'
-    testImplementation 'junit:junit:4.12'
+    testImplementation libraries.kluent
+    testImplementation "org.mockito:mockito-inline:2.21.0"
+    testImplementation "junit:junit:4.12"
 
-    androidTestImplementation 'com.android.support.test:runner:1.0.2'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    androidTestImplementation "androidx.test:runner:1.1.1"
+    androidTestImplementation "androidx.test.espresso:espresso-core:3.1.1"
 }
 
-apply plugin: 'com.google.gms.google-services'
+apply plugin: "com.google.gms.google-services"

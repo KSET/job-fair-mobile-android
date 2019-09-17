@@ -1,6 +1,6 @@
 package com.undabot.jobfair.companies.repository.mappers
 
-import IndustriesQuery
+import com.undabot.jobfair.IndustriesQuery
 import com.undabot.jobfair.companies.entities.Industry
 
 class IndustryNetworkMapper {

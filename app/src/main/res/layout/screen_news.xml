@@ -1,35 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
-  xmlns:tools="http://schemas.android.com/tools"
-  android:id="@+id/container_view"
-  android:layout_width="match_parent"
-  android:layout_height="match_parent"
-  android:animateLayoutChanges="true"
-  tools:context="com.undabot.jobfair.home.view.MainActivity">
-
-  <android.support.v4.widget.SwipeRefreshLayout
-    android:id="@+id/pull_to_refresh"
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container_view"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:foregroundTint="@color/colorAccent">
+    android:animateLayoutChanges="true"
+    tools:context="com.undabot.jobfair.home.view.MainActivity">
 
-    <android.support.v7.widget.RecyclerView
-      android:id="@+id/list"
-      android:layout_width="match_parent"
-      android:layout_height="match_parent"
-      android:paddingBottom="@dimen/bottom_navigation_height"
-      android:clipToPadding="false"
-      android:overScrollMode="never" />
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/pull_to_refresh"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipToPadding="false"
+        android:foregroundTint="@color/colorAccent">
 
-  </android.support.v4.widget.SwipeRefreshLayout>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clipToPadding="false"
+            android:overScrollMode="never"
+            android:paddingBottom="@dimen/bottom_navigation_height"/>
 
-  <ProgressBar
-    android:id="@+id/loading"
-    android:layout_width="@dimen/progress_bar"
-    android:layout_height="@dimen/progress_bar"
-    android:layout_gravity="center"
-    android:padding="@dimen/padding_progress"
-    android:progressTint="@color/colorAccent"
-    android:visibility="visible" />
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
-</android.support.design.widget.CoordinatorLayout>
+    <ProgressBar
+        android:id="@+id/loading"
+        android:layout_width="@dimen/progress_bar"
+        android:layout_height="@dimen/progress_bar"
+        android:layout_gravity="center"
+        android:padding="@dimen/padding_progress"
+        android:progressTint="@color/colorAccent"
+        android:visibility="visible"/>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

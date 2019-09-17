@@ -3,15 +3,16 @@ package com.undabot.jobfair.news.details.view
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.support.v4.app.Fragment
-import android.support.v4.app.FragmentPagerAdapter
-import android.support.v7.widget.Toolbar
+import androidx.appcompat.widget.Toolbar
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentPagerAdapter
 import com.undabot.jobfair.R
 import com.undabot.jobfair.core.di.ApplicationComponent
 import com.undabot.jobfair.core.view.BaseActivity
 import com.undabot.jobfair.news.list.view.models.NewsViewModel
 import kotlinx.android.synthetic.main.navigatable_pager.view.*
 import kotlinx.android.synthetic.main.screen_news_details.*
+import kotlinx.android.synthetic.main.toolbar_details.*
 
 class NewsDetailsContainerScreen : BaseActivity() {
 
@@ -37,18 +38,14 @@ class NewsDetailsContainerScreen : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.screen_news_details)
         toolbar = findViewById(R.id.toolbar)
-        toolbar.title = getString(R.string.news)
+        toolbarTitle.text = getString(R.string.news)
         toolbar.setNavigationOnClickListener { super.onBackPressed() }
         val list = intent.getParcelableArrayListExtra<NewsViewModel>(NEWS_ITEMS)
         val position = intent.getIntExtra(CHOSEN_ITEM, 0)
         detailPager.pager.adapter = object : FragmentPagerAdapter(supportFragmentManager) {
-            override fun getCount(): Int {
-                return list.size
-            }
+            override fun getCount(): Int  = list.size
 
-            override fun getItem(position: Int): Fragment {
-                return NewsDetailsScreen.with(list[position])
-            }
+            override fun getItem(position: Int): Fragment = NewsDetailsScreen.with(list[position])
         }
         detailPager.pager.setCurrentItem(position, false)
     }

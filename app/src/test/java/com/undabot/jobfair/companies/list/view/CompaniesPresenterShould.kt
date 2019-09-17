@@ -1,6 +1,6 @@
 package com.undabot.jobfair.companies.list.view
 
-import com.nhaarman.mockito_kotlin.verify
+import com.nhaarman.mockitokotlin2.verify
 import com.undabot.jobfair.And
 import com.undabot.jobfair.Given
 import com.undabot.jobfair.Then

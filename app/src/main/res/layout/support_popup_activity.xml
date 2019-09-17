@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar_modal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:layout_marginStart="75dp"
+        android:layout_marginEnd="75dp"
+        android:layout_marginBottom="75dp"
+        android:gravity="center_vertical"
+        android:orientation="vertical">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/icon"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/ic_macchiato"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/message1"
+            style="@style/ListTitleText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:textSize="18sp"
+            tools:text="@string/support_popup_drinks_success_message"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/message2"
+            style="@style/ListSubTitleText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="37dp"
+            android:textAllCaps="false"
+            android:textSize="14sp"
+            tools:text="@string/support_popup_you_ordered"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/support_content"
+            style="@style/Text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:textColor="@color/darkGrey"
+            android:textSize="16sp"
+            tools:text="2 Esspresso\n3 Waters"/>
+    </LinearLayout>
+</LinearLayout>

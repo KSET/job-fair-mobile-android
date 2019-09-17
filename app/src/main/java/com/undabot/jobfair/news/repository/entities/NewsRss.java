@@ -21,7 +21,7 @@ public class NewsRss {
     public String guid;
     @Element(name = "pubDate", required = false)
     public String pubDate;
-    @Element(name = "thumbnail")
+    @Element(name = "thumbnail", required = false)
     public Thumbnail thumbnail;
 
 }

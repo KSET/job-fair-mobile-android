@@ -14,7 +14,6 @@ interface AboutContract {
         fun onYouTubeChannelPressed()
         fun onDayOneStreamPressed()
         fun onDayTwoStreamPressed()
-        fun onSharePressed()
         fun onDeveloperInfoPressed()
     }
 

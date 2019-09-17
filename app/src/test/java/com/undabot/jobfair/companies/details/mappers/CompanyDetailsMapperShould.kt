@@ -1,7 +1,7 @@
 package com.undabot.jobfair.companies.details.mappers
 
-import com.nhaarman.mockito_kotlin.any
-import com.nhaarman.mockito_kotlin.whenever
+import com.nhaarman.mockitokotlin2.any
+import com.nhaarman.mockitokotlin2.whenever
 import com.undabot.jobfair.Given
 import com.undabot.jobfair.Then
 import com.undabot.jobfair.When

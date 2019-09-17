@@ -20,24 +20,24 @@ class EventsModule(private val eventType: Event.Type = Event.Type.PRESENTATION) 
     @Provides
     @PerFragment
     fun coordinator(coordinator: EventsCoordinator): EventsContract.Coordinator =
-            coordinator
+        coordinator
 
     @Provides
     @PerFragment
     fun presenter(presenter: EventsPresenter): EventsContract.Presenter =
-            presenter
+        presenter
 
     @Provides
     @PerFragment
     fun repository(
-            resourceApiService: ResourceApiService,
-            workerScheduler: WorkerScheduler
+        resourceApiService: ResourceApiService,
+        workerScheduler: WorkerScheduler
     ): EventsRepository {
         return EventsRepositoryImpl(
-                eventType,
-                resourceApiService,
-                PresentationMapper(),
-                WorkshopMapper(),
-                workerScheduler)
+            eventType,
+            resourceApiService,
+            PresentationMapper(),
+            WorkshopMapper(),
+            workerScheduler)
     }
 }

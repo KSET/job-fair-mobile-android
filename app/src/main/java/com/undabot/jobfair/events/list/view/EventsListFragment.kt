@@ -2,15 +2,15 @@ package com.undabot.jobfair.events.list.view
 
 import android.os.Bundle
 import android.os.Parcelable
-import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.undabot.jobfair.R
 import com.undabot.jobfair.core.di.ApplicationComponent
 import com.undabot.jobfair.core.view.BaseFragment
+import com.undabot.jobfair.events.details.view.EventDetailsContainerScreen
 import com.undabot.jobfair.events.details.view.EventDetailsParams
-import com.undabot.jobfair.events.details.view.EventDetailsScreen
 import com.undabot.jobfair.events.entities.Event
 import com.undabot.jobfair.events.list.view.adapter.EventsAdapter
 import com.undabot.jobfair.events.view.EventViewModel
@@ -24,11 +24,11 @@ class EventsListFragment : BaseFragment() {
         private val EXTRA_EVENTS = "extra_events"
         private val EXTRA_EVENT_TYPE = "extra_event_type"
 
-        fun newInstance(eventList: List<Any>,
+        fun newInstance(eventList: ArrayList<Parcelable>,
                         eventType: Event.Type): EventsListFragment =
                 EventsListFragment().apply {
                     arguments = Bundle().apply {
-                        putParcelableArrayList(EXTRA_EVENTS, eventList as ArrayList<out Parcelable>)
+                        putParcelableArrayList(EXTRA_EVENTS, eventList)
                         putString(EXTRA_EVENT_TYPE, eventType.name)
                     }
                 }
@@ -56,7 +56,7 @@ class EventsListFragment : BaseFragment() {
     }
 
     private fun openEventDetailsFor(eventId: String) {
-        startActivity(EventDetailsScreen.intent(context!!, paramsFor(eventId)))
+        startActivity(EventDetailsContainerScreen.intent(context!!, paramsFor(eventId)))
     }
 
     private fun paramsFor(eventId: String) = EventDetailsParams(

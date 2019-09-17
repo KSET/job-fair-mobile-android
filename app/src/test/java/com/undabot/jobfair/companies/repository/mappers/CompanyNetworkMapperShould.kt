@@ -1,6 +1,6 @@
 package com.undabot.jobfair.companies.repository.mappers
 
-import CompaniesQuery
+import com.undabot.jobfair.CompaniesQuery
 import com.undabot.jobfair.Given
 import com.undabot.jobfair.Then
 import com.undabot.jobfair.When
@@ -49,6 +49,6 @@ class CompanyNetworkMapperShould {
 
     private fun companyWith(id: String? = null, name: String? = null, logo: String? = null) {
         company = CompaniesQuery.Company("", id, name,
-                CompaniesQuery.Logo("", CompaniesQuery.Small("", logo)))
+            CompaniesQuery.Logo("", CompaniesQuery.Small("", logo)))
     }
 }
